@@ -1,0 +1,31 @@
+<!-- Technical Philosophy Section -->
+<section class="py-32 px-8 max-w-7xl mx-auto" id="philosophy">
+    <div class="flex items-baseline gap-4 mb-12">
+        <h2 class="text-4xl font-headline font-bold tracking-tighter uppercase">Technical Philosophy</h2>
+        <div class="h-px flex-grow bg-outline-variant/20"></div>
+        <div class="mono-label text-on-surface-variant text-xs">MODULE: 01</div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-surface-container-high p-8 rounded-lg border-l-2 border-primary flex flex-col justify-between min-h-[280px] philosophy-card" data-philosophy="reliability">
+            <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">schema</span>
+            <div class="mt-6">
+                <h3 class="mono-label text-lg font-bold mb-3 uppercase tracking-tight">Atomic Reliability</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">System failures are not an option. I build with redundancy and fault tolerance as primary primitives, not afterthoughts.</p>
+            </div>
+        </div>
+        <div class="bg-surface-container-high p-8 rounded-lg flex flex-col justify-between min-h-[280px] philosophy-card" data-philosophy="latency">
+            <span class="material-symbols-outlined text-primary text-4xl">speed</span>
+            <div class="mt-6">
+                <h3 class="mono-label text-lg font-bold mb-3 uppercase tracking-tight">Latency Obsession</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">Every millisecond counts. Optimization is the art of subtracting the unnecessary until only the logic remains.</p>
+            </div>
+        </div>
+        <div class="bg-surface-container-high p-8 rounded-lg flex flex-col justify-between min-h-[280px] philosophy-card" data-philosophy="security">
+            <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">security</span>
+            <div class="mt-6">
+                <h3 class="mono-label text-lg font-bold mb-3 uppercase tracking-tight">Security-First Flow</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">The perimeter is the first line of code. Identity and access management are hard-coded into the architecture.</p>
+            </div>
+        </div>
+    </div>
+</section>

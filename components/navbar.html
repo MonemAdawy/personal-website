@@ -1,0 +1,56 @@
+<!-- Navbar Component -->
+<nav class="fixed top-0 w-full z-50 bg-[#0c0e11]/80 backdrop-blur-xl border-b border-outline-variant/20">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
+        
+        <!-- Logo -->
+        <div class="text-base sm:text-lg md:text-xl font-black tracking-tighter text-primary font-headline cursor-pointer truncate" 
+             onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            MONEM_ADAWY
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+            <a class="text-slate-400 font-mono text-xs lg:text-sm hover:text-primary transition-colors duration-200 nav-link" href="#hero">Home</a>
+            <a class="text-slate-400 font-mono text-xs lg:text-sm hover:text-primary transition-colors duration-200 nav-link" href="#about">About</a>
+            <a class="text-slate-400 font-mono text-xs lg:text-sm hover:text-primary transition-colors duration-200 nav-link" href="#projects">Projects</a>
+            <a class="text-slate-400 font-mono text-xs lg:text-sm hover:text-primary transition-colors duration-200 nav-link" href="#services">Services</a>
+            <a class="text-slate-400 font-mono text-xs lg:text-sm hover:text-primary transition-colors duration-200 nav-link" href="#skills">Skills</a>
+            <a class="text-slate-400 font-mono text-xs lg:text-sm hover:text-primary transition-colors duration-200 nav-link" href="#career">Career</a>
+            <a class="text-slate-400 font-mono text-xs lg:text-sm hover:text-primary transition-colors duration-200 nav-link" href="#contact">Contact</a>
+        </div>
+        
+        <!-- Right side buttons -->
+        <div class="flex items-center gap-2 sm:gap-4">
+            <span class="material-symbols-outlined text-primary hover:bg-primary/10 p-1.5 sm:p-2 rounded cursor-pointer transition-all text-base sm:text-lg md:text-xl" 
+                  onclick="openTerminal()">terminal</span>
+            
+            <button class="signature-gradient text-on-primary px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-md font-headline font-bold tracking-tighter uppercase text-xs sm:text-sm md:text-base scale-95 active:scale-90 transition-transform whitespace-nowrap" 
+                    onclick="showHireModal()">
+                Hire Me
+            </button>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn md:hidden flex items-center justify-center text-primary p-2 rounded-lg hover:bg-primary/10 transition-colors" 
+                    id="mobileMenuBtn"
+                    aria-label="Menu">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="mobile-menu-overlay">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+        ✕
+    </button>
+    <div class="menu-items">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#skills">Skills</a>
+        <a href="#career">Career</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>

@@ -1,0 +1,145 @@
+/* ================= CONTACT SECTION ================= */
+
+.contact-item {
+    cursor: pointer;
+}
+
+.contact-item:hover .material-symbols-outlined {
+    font-variation-settings: 'FILL' 1;
+}
+
+/* ================= FORM BASE ================= */
+
+#contact-form input,
+#contact-form textarea,
+#contact-form button {
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+/* ❌ REMOVE DEFAULT BLUE (Chrome + Tailwind) */
+#contact-form input:focus,
+#contact-form textarea:focus,
+#contact-form button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ❌ REMOVE TAILWIND RING */
+#contact-form input:focus,
+#contact-form textarea:focus {
+    --tw-ring-shadow: none !important;
+    --tw-ring-color: transparent !important;
+}
+
+/* ✅ CUSTOM GREEN FOCUS */
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #3fff8b;
+    box-shadow: 0 0 0 1px rgba(63, 255, 139, 0.25);
+    transform: translateY(-2px);
+}
+
+/* ================= BUTTON EFFECT ================= */
+
+#contact-form button {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#contact-form button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+#contact-form button:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* ================= OPTIONAL SUCCESS STATE ================= */
+
+#contact-form.success input,
+#contact-form.success textarea {
+    border-color: #3fff8b !important;
+    box-shadow: 0 0 0 1px rgba(63, 255, 139, 0.3);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    #contact {
+        padding: 6rem 1.5rem !important;
+    }
+    
+    #contact h2 {
+        font-size: 3.5rem !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    #contact {
+        padding: 4rem 1rem !important;
+    }
+
+    #contact .grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    #contact h2 {
+        font-size: 2.5rem !important;
+    }
+
+    #contact-form {
+        padding: 1.25rem !important;
+    }
+
+    #contact-form input,
+    #contact-form textarea {
+        font-size: 0.875rem !important;
+        padding: 0.625rem 0.75rem !important;
+    }
+
+    #contact-form button {
+        padding: 0.75rem !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Small devices */
+@media (max-width: 480px) {
+    #contact h2 {
+        font-size: 2rem !important;
+    }
+
+    #contact-form {
+        padding: 1rem !important;
+    }
+
+    #contact-form input,
+    #contact-form textarea,
+    #contact-form button {
+        min-height: 44px;
+    }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    #contact-form input,
+    #contact-form textarea,
+    #contact-form button::before {
+        transition: none !important;
+    }
+}

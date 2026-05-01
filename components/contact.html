@@ -1,0 +1,123 @@
+<!-- Contact Section -->
+<section class="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-surface-container-low" id="contact">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16">
+
+        <!-- ================= LEFT: CONTACT INFO ================= -->
+        <!-- يظهر أول على الموبايل -->
+        <div class="lg:col-span-5 order-1 lg:order-1">
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-4 md:mb-6 lg:mb-8 break-words">
+                GET_IN_TOUCH
+            </h2>
+            
+            <p class="text-on-surface-variant text-base sm:text-lg mb-6 md:mb-8 lg:mb-12 leading-relaxed">
+                Open for consulting, freelance projects, or architectural audits. Let's discuss your system's bottleneck.
+            </p>
+            
+            <div class="space-y-4 md:space-y-6">
+
+                <!-- EMAIL -->
+                <div class="flex items-center gap-3 md:gap-4 group contact-item cursor-pointer">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded bg-surface-container-high flex items-center justify-center text-primary transition-all">
+                        <span class="material-symbols-outlined text-base sm:text-xl">alternate_email</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="mono-label text-[0.65rem] sm:text-xs text-outline uppercase tracking-wider">Electronic_Mail</p>
+                        <p class="font-bold text-sm sm:text-base break-words">abdoadwy208@gmail.com</p>
+                    </div>
+                </div>
+                
+                <!-- LOCATION -->
+                <div class="flex items-center gap-3 md:gap-4 group contact-item cursor-pointer">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded bg-surface-container-high flex items-center justify-center text-primary transition-all">
+                        <span class="material-symbols-outlined text-base sm:text-xl">location_on</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="mono-label text-[0.65rem] sm:text-xs text-outline uppercase tracking-wider">Base_Operations</p>
+                        <p class="font-bold text-sm sm:text-base break-words">Remote / Central European Time</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= RIGHT: FORM ================= -->
+        <div class="lg:col-span-7 order-2 lg:order-2">
+
+            <form id="contact-form" class="bg-surface-container p-5 sm:p-6 md:p-8 rounded-lg ghost-border space-y-5 md:space-y-6">
+
+                <!-- NAME + EMAIL -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+
+                    <div class="space-y-2">
+                        <label class="mono-label text-[0.65rem] sm:text-xs uppercase text-outline block">
+                            _Client_Identity
+                        </label>
+                        <input 
+                            type="text"
+                            name="name"
+                            placeholder="Your Name"
+                            required
+                            class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded px-3 sm:px-4 py-2.5 sm:py-3 text-on-surface text-sm sm:text-base"
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="mono-label text-[0.65rem] sm:text-xs uppercase text-outline block">
+                            _Return_Path
+                        </label>
+                        <input 
+                            type="email"
+                            name="email"
+                            placeholder="email@address.com"
+                            required
+                            class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded px-3 sm:px-4 py-2.5 sm:py-3 text-on-surface text-sm sm:text-base"
+                        />
+                    </div>
+
+                </div>
+
+                <!-- PHONE -->
+                <div class="space-y-2">
+                    <label class="mono-label text-[0.65rem] sm:text-xs uppercase text-outline block">
+                        _Direct_Line
+                    </label>
+                    <input 
+                        type="tel"
+                        name="phone"
+                        placeholder="Your Phone +20 10 1234 5678"
+                        required
+                        class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded px-3 sm:px-4 py-2.5 sm:py-3 text-on-surface text-sm sm:text-base"
+                    />
+                </div>
+
+                <!-- MESSAGE -->
+                <div class="space-y-2">
+                    <label class="mono-label text-[0.65rem] sm:text-xs uppercase text-outline block">
+                        _Transmission_Data
+                    </label>
+                    <textarea 
+                        name="message"
+                        rows="4"
+                        placeholder="Brief project description or inquiry..."
+                        required
+                        class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded px-3 sm:px-4 py-2.5 sm:py-3 text-on-surface text-sm sm:text-base"
+                    ></textarea>
+                </div>
+
+                <!-- BUTTON -->
+                <button 
+                    type="submit"
+                    class="w-full signature-gradient text-on-primary font-bold py-3 sm:py-4 rounded hover:brightness-110 transition-all uppercase tracking-widest text-xs sm:text-sm active:scale-95"
+                >
+                    Execute_Submission
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>

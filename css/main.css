@@ -1,0 +1,185 @@
+/* main.css - Global Styles (بدون @tailwind لأننا نستخدم CDN) */
+
+/* Custom Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0c0e11;
+    color: #f9f9fd;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.mono-label, .mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.glass-nav {
+    background: rgba(12, 14, 17, 0.8);
+    backdrop-filter: blur(24px);
+}
+
+.signature-gradient {
+    background: linear-gradient(135deg, #3fff8b 0%, #13ea79 100%);
+}
+
+.ghost-border {
+    outline: 1px solid rgba(70, 72, 75, 0.2);
+}
+
+::selection {
+    background: #3fff8b;
+    color: #005d2c;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-pulse-custom {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #171a1d;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3fff8b;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #24f07e;
+}
+
+/* Section Visibility Animation */
+section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Card Hover Effects */
+.project-card, .service-card, .philosophy-card, .skill-item {
+    transition: all 0.3s ease;
+}
+
+.project-card:hover, .service-card:hover, .philosophy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -15px rgba(63, 255, 139, 0.15);
+}
+
+.skill-item:hover {
+    transform: scale(1.02);
+    border-color: #3fff8b;
+}
+
+/* Timeline Item Hover */
+.timeline-item:hover .material-symbols-outlined {
+    color: #3fff8b;
+}
+
+/* Form Input Focus Effects */
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(63, 255, 139, 0.2);
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading-shimmer {
+    background: linear-gradient(90deg, #171a1d 25%, #23262a 50%, #171a1d 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .text-6xl {
+        font-size: 2.5rem;
+    }
+    
+    .text-5xl {
+        font-size: 2rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .glass-nav, .fixed {
+        position: static;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .signature-gradient {
+        background: #3fff8b;
+        color: black;
+    }
+}

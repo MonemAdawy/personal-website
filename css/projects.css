@@ -1,0 +1,320 @@
+/* Projects Section Specific Styles */
+/* .project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(63, 255, 139, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.tech-tag {
+    transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+    background: #3fff8b;
+    color: #005d2c;
+    transform: translateY(-2px);
+} */
+
+/* Terminal Animation */
+/* .terminal-line {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.terminal-line:nth-child(1) { animation-delay: 0.1s; }
+.terminal-line:nth-child(2) { animation-delay: 0.3s; }
+.terminal-line:nth-child(3) { animation-delay: 0.5s; }
+.terminal-line:nth-child(4) { animation-delay: 0.7s; } */
+
+
+
+
+
+
+
+
+
+
+
+
+/* Projects Section Specific Styles */
+.project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(63, 255, 139, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.tech-tag {
+    transition: all 0.2s ease;
+    display: inline-block;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+.tech-tag:hover {
+    background: #3fff8b;
+    color: #005d2c;
+    transform: translateY(-2px);
+}
+
+/* Terminal Animation */
+.terminal-line {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.terminal-line:nth-child(1) { animation-delay: 0.1s; }
+.terminal-line:nth-child(2) { animation-delay: 0.3s; }
+.terminal-line:nth-child(3) { animation-delay: 0.5s; }
+.terminal-line:nth-child(4) { animation-delay: 0.7s; }
+
+/* ========== RESPONSIVE FIXES FOR PROJECTS SECTION ========== */
+
+/* Tablet and medium screens */
+@media (max-width: 1024px) {
+    #projects {
+        padding: 6rem 1.5rem !important;
+    }
+    
+    #projects .mb-20 {
+        margin-bottom: 3rem !important;
+    }
+    
+    #projects h2 {
+        font-size: 3rem !important;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+    #projects {
+        padding: 4rem 1rem !important;
+    }
+    
+    /* Section header */
+    #projects .mb-20 {
+        margin-bottom: 2rem !important;
+    }
+    
+    #projects .mono-label {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    #projects h2 {
+        font-size: 2rem !important;
+        letter-spacing: -0.02em !important;
+        word-break: break-word;
+    }
+    
+    /* Grid layout - single column on mobile */
+    #projects .grid {
+        gap: 1.5rem !important;
+    }
+    
+    /* Project cards */
+    .project-card {
+        padding: 1.25rem !important;
+    }
+    
+    /* Featured project (first card) */
+    .project-card.lg\:col-span-2 {
+        padding: 1.25rem !important;
+    }
+    
+    /* Project title */
+    .project-card h3 {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    /* Project description */
+    .project-card p {
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Tech tags container */
+    .project-card .flex.flex-wrap {
+        gap: 0.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Individual tech tags */
+    .tech-tag {
+        font-size: 0.7rem !important;
+        padding: 0.25rem 0.6rem !important;
+        white-space: nowrap;
+    }
+    
+    /* Links container */
+    .project-card .flex.items-center {
+        flex-wrap: wrap !important;
+        gap: 0.75rem !important;
+        margin-top: 1rem !important;
+    }
+    
+    /* Individual links */
+    .project-card a {
+        font-size: 0.75rem !important;
+        padding: 0.25rem 0 !important;
+    }
+    
+    /* Material icons in links */
+    .project-card .material-symbols-outlined {
+        font-size: 1rem !important;
+    }
+    
+    /* Version badge */
+    .project-card .mono-label.text-xs {
+        font-size: 0.65rem !important;
+    }
+}
+
+/* Small mobile devices (<=480px) */
+@media (max-width: 480px) {
+    #projects {
+        padding: 3rem 0.75rem !important;
+    }
+    
+    #projects h2 {
+        font-size: 1.75rem !important;
+    }
+    
+    .project-card {
+        padding: 1rem !important;
+    }
+    
+    .project-card h3 {
+        font-size: 1.25rem !important;
+    }
+    
+    .project-card p {
+        font-size: 0.8rem !important;
+    }
+    
+    .tech-tag {
+        font-size: 0.65rem !important;
+        padding: 0.2rem 0.5rem !important;
+    }
+    
+    /* Stack links vertically on very small screens */
+    .project-card .flex.items-center {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.5rem !important;
+    }
+    
+    .project-card a {
+        width: 100% !important;
+    }
+    
+    /* Adjust spacing for compact layout */
+    .project-card .mt-12 {
+        margin-top: 1rem !important;
+    }
+}
+
+/* Landscape mode on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    #projects {
+        padding: 3rem 1rem !important;
+    }
+    
+    .project-card {
+        padding: 1rem !important;
+    }
+    
+    .project-card h3 {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .project-card p {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+}
+
+/* Modal responsive fixes */
+@media (max-width: 768px) {
+    #image-modal .max-w-4xl {
+        padding: 0 1rem !important;
+    }
+    
+    #image-modal button {
+        font-size: 1.5rem !important;
+        padding: 0.5rem !important;
+    }
+    
+    #image-modal .absolute.left-0,
+    #image-modal .absolute.right-0 {
+        font-size: 2rem !important;
+        background: rgba(0,0,0,0.5);
+        width: 2rem;
+        text-align: center;
+        border-radius: 50%;
+    }
+    
+    #modal-dots {
+        margin-top: 0.5rem !important;
+        gap: 0.5rem !important;
+    }
+    
+    #modal-dots button {
+        width: 0.5rem !important;
+        height: 0.5rem !important;
+        font-size: 0 !important;
+    }
+}

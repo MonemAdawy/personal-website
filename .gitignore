@@ -1,0 +1,35 @@
+# Node modules (لو هتستخدم npm مستقبلاً)
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs / Editors
+.vscode/
+.idea/
+
+# Environment files
+.env
+
+# Build / Dist (لو هتضيف build step بعدين)
+dist/
+build/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Optional: ignore images لو مش عايز ترفعها (امسح السطر لو محتاجهم)
+# assets/images/

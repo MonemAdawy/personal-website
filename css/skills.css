@@ -1,0 +1,48 @@
+/* Skills Section Specific Styles */
+.skill-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3fff8b;
+    transition: width 0.3s ease;
+}
+
+.skill-item:hover::after {
+    width: 100%;
+}
+
+.skill-level-indicator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.skill-level-expert .skill-level-indicator {
+    background: #3fff8b;
+    box-shadow: 0 0 8px #3fff8b;
+}
+
+.skill-level-advanced .skill-level-indicator {
+    background: #74fbbb;
+}
+
+.skill-metric {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.skill-metric:hover {
+    transform: translateX(5px);
+    border-left-width: 6px;
+}

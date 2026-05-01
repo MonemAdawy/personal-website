@@ -1,0 +1,137 @@
+
+
+
+
+
+/* Hero Section Specific Styles */
+.hero-image {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.02);
+}
+
+.hero-badge {
+    background: rgba(63, 255, 139, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Typing animation for hero text - DISABLED ON MOBILE */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.typing-text {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #3fff8b;
+    animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+}
+
+/* RESPONSIVE FIXES FOR MOBILE */
+@media (max-width: 768px) {
+    /* Hero section padding adjustments */
+    #hero {
+        padding: 8rem 1.5rem 4rem 1.5rem !important;
+        min-height: auto !important;
+    }
+    
+    /* Heading text size for mobile */
+    #hero h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+        word-break: break-word;
+    }
+    
+    /* Subtitle text */
+    #hero p.text-xl {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Button group layout - stack on mobile */
+    #hero .flex.items-center.space-x-6 {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
+    }
+    
+    /* Initialize Project button */
+    #hero button.signature-gradient {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Links styling */
+    #hero a {
+        font-size: 0.875rem !important;
+    }
+    
+    /* Disable typing animation on mobile */
+    .typing-text {
+        white-space: normal !important;
+        animation: none !important;
+        border-right: none !important;
+    }
+    
+    /* System active badge */
+    #hero .flex.items-center.space-x-3 {
+        margin-bottom: 1rem;
+    }
+    
+    #hero .mono-label {
+        font-size: 0.7rem !important;
+    }
+    
+    /* Space between elements */
+    #hero .space-y-8 {
+        gap: 1.5rem !important;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #hero h1 {
+        font-size: 8rem !important;
+    }
+    
+    #hero {
+        padding: 4rem 2rem 2rem 2rem !important;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    #hero {
+        padding: 5rem 1rem 2rem 1rem !important;
+    }
+
+    #hero h1 {
+        font-size: 3.5rem !important;
+    }
+    
+    #hero .text-6xl {
+        font-size: 4rem !important;
+    }
+    
+    .text-transparent.bg-clip-text {
+        display: inline-block;
+    }
+}
+
+
+
+
+
+
+
+
+
