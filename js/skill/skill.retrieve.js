@@ -1,14 +1,22 @@
+const ACCENTS = ["#3fff8b", "#7ae6ff", "#a78bfa", "#74fbbb", "#ffcb6b", "#ff8fa3"];
+
 function getIcon(name) {
   const n = name.toLowerCase();
 
-  if (n.includes("mongo") || n.includes("sql")) return "storage";
-  if (n.includes("redis")) return "dns";
+  if (n.includes("language")) return "code_blocks";
+  if (n.includes("backend")) return "dns";
+  if (n.includes("data") || n.includes("mongo") || n.includes("sql")) return "database";
+  if (n.includes("redis") || n.includes("cach")) return "memory";
   if (n.includes("cloud") || n.includes("aws")) return "cloud";
+  if (n.includes("devops") || n.includes("ci") || n.includes("docker")) return "deployed_code";
+  if (n.includes("test")) return "verified";
   if (n.includes("api")) return "api";
-  if (n.includes("security")) return "security";
-  if (n.includes("devops") || n.includes("ci")) return "view_kanban";
+  if (n.includes("security") || n.includes("auth")) return "shield_lock";
+  if (n.includes("front")) return "web";
+  if (n.includes("tool") || n.includes("version")) return "construction";
+  if (n.includes("soft") || n.includes("team")) return "groups";
 
-  return "code";
+  return "terminal";
 }
 
 export async function loadSkills() {
@@ -18,44 +26,54 @@ export async function loadSkills() {
 
   try {
     const res = await fetch(`${window.API_BASE_URL}/skill`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const skills = await res.json();
+
+    window.portfolioData.skills = skills;
+    const techCount = skills.reduce((sum, s) => sum + (s.subSkills?.length || 0), 0);
+    window.setStat?.("stat-tech", techCount);
 
     skillsGrid.innerHTML = "";
 
-    skills.forEach(skill => {
+    skills.forEach((skill, index) => {
+      const accent = ACCENTS[index % ACCENTS.length];
       const skillCard = document.createElement("div");
 
-      skillCard.className =
-        "p-6 rounded-md bg-surface-container-high border border-outline-variant/10 flex flex-col items-center justify-center text-center hover:scale-[1.02] transition-transform skill-item";
+      skillCard.className = "glass spot lift skill-card p-7 flex flex-col gap-5 reveal";
+      skillCard.style.setProperty("--d", `${(index % 3) * 0.08}s`);
 
-      // generate subskills HTML
       const subSkillsHTML = skill.subSkills?.length
         ? skill.subSkills
-            .map(
-              sub => `
-                <span class="text-[12px] text-outline">${sub.name}</span>
-              `
-            )
+            .map((sub) => `<span class="chip">${window.escapeHTML(sub.name)}</span>`)
             .join("")
-        : `<span class="text-[15px] text-outline">No sub-skills</span>`;
+        : "";
 
       skillCard.innerHTML = `
-        <span class="material-symbols-outlined text-primary mb-4 text-3xl">
-          ${getIcon(skill.name)}
-        </span>
+        <div class="flex items-center justify-between">
+          <div class="bento-icon" style="--c:${accent}">
+            <span class="material-symbols-outlined">${getIcon(skill.name)}</span>
+          </div>
+          <span class="mono-label text-xs text-outline">${String(skill.subSkills?.length || 0).padStart(2, "0")} tools</span>
+        </div>
 
-        <span class="mono-label text-xs font-bold uppercase tracking-widest mb-2">
-          ${skill.name}
-        </span>
+        <h3 class="text-lg font-semibold tracking-tight">${window.escapeHTML(skill.name)}</h3>
 
-        <div class="flex flex-col gap-1 mt-2">
+        <div class="flex flex-wrap gap-2">
           ${subSkillsHTML}
         </div>
       `;
 
       skillsGrid.appendChild(skillCard);
     });
+
+    window.observeReveals?.(skillsGrid);
   } catch (err) {
     console.error("Error loading skills:", err);
+    skillsGrid.innerHTML = `
+      <div class="glass p-8 sm:col-span-2 lg:col-span-3 flex flex-wrap gap-2">
+        ${["Node.js", "NestJS", "Express.js", "TypeScript", "PostgreSQL", "MongoDB", "MySQL", "Redis", "Docker", "Kafka", "JWT / OAuth", "Unit Testing"]
+          .map((s) => `<span class="chip">${s}</span>`)
+          .join("")}
+      </div>`;
   }
 }

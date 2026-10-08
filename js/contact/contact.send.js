@@ -20,7 +20,7 @@ async function handleSubmit(e) {
     const originalText = submitBtn.innerHTML;
 
     // UI Loading state
-    submitBtn.innerHTML = 'SENDING...';
+    submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Sending…';
     submitBtn.disabled = true;
 
     const formData = Object.fromEntries(new FormData(form));
@@ -41,43 +41,15 @@ async function handleSubmit(e) {
             throw new Error('Request failed');
         }
 
-        showToast('✓ Message sent successfully', 'success');
+        window.showToast("Message sent — I'll get back to you soon!", 'success');
         form.reset();
 
     } catch (error) {
         console.error(error);
-        showToast('✗ Failed to send message', 'error');
+        window.showToast('Could not send the message. Please email me directly.', 'error');
 
     } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
     }
-}
-
-/* =========================
-   Toast System
-========================= */
-function showToast(message, type = 'success') {
-    const toast = document.createElement('div');
-
-    toast.className = `
-        fixed top-6 right-6 z-50 px-5 py-3 rounded-lg shadow-lg
-        text-sm font-medium transition-all
-        ${type === 'success'
-            ? 'bg-primary text-on-primary'
-            : 'bg-error text-white'}
-    `;
-
-    toast.innerText = message;
-
-    document.body.appendChild(toast);
-
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(-10px)';
-    }, 2500);
-
-    setTimeout(() => {
-        toast.remove();
-    }, 3000);
 }

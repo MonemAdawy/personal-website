@@ -1,86 +1,94 @@
-<!-- Career Log / Timeline Section -->
-<section class="py-32 px-8 max-w-7xl mx-auto" id="career">
-    <div class="flex items-baseline gap-4 mb-12">
-        <h2 class="text-4xl font-headline font-bold tracking-tighter uppercase">Career Log</h2>
-        <div class="h-px flex-grow bg-outline-variant/20"></div>
-        <div class="mono-label text-on-surface-variant text-xs">MODULE: 02</div>
-    </div>
-    <div class="space-y-0 relative">
-        <div class="absolute left-[7px] top-2 bottom-2 w-px bg-outline-variant/30"></div>
+<!-- Career / Experience Timeline Section -->
+<section class="section" id="career">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-4">
+            <div class="lg:sticky lg:top-32 space-y-6">
+                <p class="eyebrow reveal">Experience</p>
+                <h2 class="section-title reveal" style="--d:.08s">Where I've <span class="text-gradient">shipped.</span></h2>
+                <p class="section-lead reveal" style="--d:.16s">
+                    From intensive programs to production teams — building, testing, and shipping backend systems with agile teams.
+                </p>
+            </div>
+        </div>
 
+        <div class="lg:col-span-8">
+            <div class="timeline" id="timeline">
+                <div class="timeline-rail"></div>
+                <div class="timeline-fill"></div>
 
-        <div class="relative pl-12 pb-16 hover:bg-surface-container-low/50 transition-colors group timeline-item" data-year="2026">
-            <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary ring-4 ring-surface"></div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="mono-label text-primary text-sm font-bold">JUN 2026 — PRESENT</div>
-                <div class="md:col-span-3">
-                    <h4 class="text-xl font-headline font-bold mb-1 uppercase tracking-tight">Backend Developer</h4>
-                    <p class="text-on-surface-variant text-sm mb-4">DataSoft · Full-time</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">Frappe</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">UNIT TESTING</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">DOCKER</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">CLOUD</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">POSTGRESQL</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">MYSQL</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">MONGODB</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">AGILE</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">SCRUM</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">JIRA</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">GITHUB</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">SLACK</span>
-                    </div>
+                <div class="space-y-6">
+                    <article class="timeline-item is-current reveal">
+                        <span class="timeline-node"></span>
+                        <div class="glass spot p-6 sm:p-8">
+                            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                <span class="mono-label text-xs text-on-surface-variant">Jun 2026 — Present</span>
+                                <span class="badge-live">Current</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Backend Developer</h3>
+                            <p class="text-on-surface-variant mt-1 mb-5">DataSoft <span class="text-outline">·</span> Full-time</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="chip">Frappe</span>
+                                <span class="chip">Unit Testing</span>
+                                <span class="chip">Docker</span>
+                                <span class="chip">Cloud</span>
+                                <span class="chip">PostgreSQL</span>
+                                <span class="chip">MySQL</span>
+                                <span class="chip">MongoDB</span>
+                                <span class="chip">Agile / Scrum</span>
+                                <span class="chip">Jira</span>
+                                <span class="chip">GitHub</span>
+                                <span class="chip">Slack</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item is-current reveal">
+                        <span class="timeline-node"></span>
+                        <div class="glass spot p-6 sm:p-8">
+                            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                <span class="mono-label text-xs text-on-surface-variant">Oct 2025 — Present</span>
+                                <span class="badge-live">Ongoing</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">Backend Node.js Developer</h3>
+                            <p class="text-on-surface-variant mt-1 mb-5">Elevate Tech <span class="text-outline">·</span> Apprenticeship</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="chip">NestJS</span>
+                                <span class="chip">Microservices</span>
+                                <span class="chip">Unit Testing</span>
+                                <span class="chip">Docker</span>
+                                <span class="chip">Cloud</span>
+                                <span class="chip">PostgreSQL</span>
+                                <span class="chip">MongoDB</span>
+                                <span class="chip">Stripe</span>
+                                <span class="chip">Agile / Scrum</span>
+                                <span class="chip">Jira</span>
+                                <span class="chip">GitHub</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-node"></span>
+                        <div class="glass spot p-6 sm:p-8">
+                            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                                <span class="mono-label text-xs text-on-surface-variant">Aug 2025 — Oct 2025</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-semibold tracking-tight">MEAN Stack Developer</h3>
+                            <p class="text-on-surface-variant mt-1 mb-5">National Telecommunication Institute (NTI) <span class="text-outline">·</span> Internship</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="chip">JavaScript</span>
+                                <span class="chip">TypeScript</span>
+                                <span class="chip">Angular</span>
+                                <span class="chip">Express.js</span>
+                                <span class="chip">NestJS</span>
+                                <span class="chip">MySQL</span>
+                                <span class="chip">MongoDB</span>
+                                <span class="chip">Apache Kafka</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
-        
-        <div class="relative pl-12 pb-16 hover:bg-surface-container-low/50 transition-colors group timeline-item" data-year="2025">
-            <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary ring-4 ring-surface"></div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="mono-label text-primary text-sm font-bold">OCT 2025 — PRESENT</div>
-                <div class="md:col-span-3">
-                    <h4 class="text-xl font-headline font-bold mb-1 uppercase tracking-tight">Backend Node.js</h4>
-                    <p class="text-on-surface-variant text-sm mb-4">Elevate Tech · Apprenticeship</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">NEST.JS</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">MICROSERVICES</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">UNIT TESTING</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">DOCKER</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">CLOUD</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">POSTGRESQL</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">MONGODB</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">AGILE</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">SCRUM</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">JIRA</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">GITHUB</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">SLACK</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">STRIPE</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="relative pl-12 pb-16 hover:bg-surface-container-low/50 transition-colors group timeline-item" data-year="2025">
-            <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-outline-variant ring-4 ring-surface group-hover:bg-primary transition-colors"></div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="mono-label text-on-surface-variant text-sm font-bold">AUG 2025 — OCT 2025</div>
-                <div class="md:col-span-3">
-                    <h4 class="text-xl font-headline font-bold mb-1 uppercase tracking-tight">Mean Stack Developer</h4>
-                    <p class="text-on-surface-variant text-sm mb-4">National Telecommunication Institute (NTI) · Internship</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">JS</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">TS</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">MYSQL</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">MONGODB</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">ANGULAR</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">EXPRESS.JS</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">NEST.JS</span>
-                        <span class="mono-label text-[10px] bg-surface-container-highest px-2 py-1 text-on-surface-variant rounded">APACHE_KAFKA</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-
     </div>
 </section>

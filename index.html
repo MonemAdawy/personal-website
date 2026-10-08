@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>MONEM_ADAWY // Backend Architect Portfolio</title>
+<title>Monem Adawy — Backend Engineer</title>
+<meta name="description" content="Monem Adawy — Backend Engineer specializing in Node.js & NestJS. Secure APIs, clean architecture, and systems that scale."/>
+<meta name="theme-color" content="#07090c"/>
+<meta property="og:title" content="Monem Adawy — Backend Engineer"/>
+<meta property="og:description" content="Secure APIs, clean architecture, and backend systems that scale."/>
+<meta property="og:image" content="assets/images/myPhoto22.jpeg"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307090c'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='28' fill='%233fff8b'%3EMA%3C/text%3E%3C/svg%3E"/>
 
 <!-- Tailwind CSS CDN (يجب أن يكون أولاً) -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -15,31 +21,26 @@
         theme: {
             extend: {
                 colors: {
-                    "surface": "#0c0e11",
-                    "on-surface": "#f9f9fd",
-                    "on-surface-variant": "#aaabaf",
+                    "surface": "#07090c",
+                    "on-surface": "#f4f6fa",
+                    "on-surface-variant": "#9ba1ab",
                     "primary": "#3fff8b",
                     "secondary": "#74fbbb",
                     "tertiary": "#7ae6ff",
+                    "accent": "#a78bfa",
                     "primary-dim": "#24f07e",
                     "secondary-dim": "#65ecae",
                     "tertiary-dim": "#00cdec",
-                    "surface-container": "#171a1d",
-                    "surface-container-low": "#111417",
-                    "surface-container-high": "#1d2024",
-                    "surface-container-highest": "#23262a",
+                    "surface-container": "#12151a",
+                    "surface-container-low": "#0d1014",
+                    "surface-container-high": "#181c22",
+                    "surface-container-highest": "#20252c",
                     "surface-container-lowest": "#000000",
-                    "outline": "#747579",
-                    "outline-variant": "#46484b",
+                    "outline": "#6b717b",
+                    "outline-variant": "#2a2f37",
                     "error": "#ff716c",
                     "error-dim": "#d7383b",
-                    "on-primary": "#005d2c"
-                },
-                borderRadius: {
-                    DEFAULT: "0.125rem",
-                    lg: "0.25rem",
-                    xl: "0.5rem",
-                    full: "0.75rem"
+                    "on-primary": "#00351a"
                 },
                 fontFamily: {
                     headline: ["Space Grotesk", "sans-serif"],
@@ -52,47 +53,79 @@
 </script>
 
 <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 
 <!-- Material Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
-<!-- Custom CSS (بعد Tailwind) -->
+<!-- Design system -->
 <link rel="stylesheet" href="css/main.css"/>
-
-<!-- Custom CSS for specific sections (اختياري) -->
-<link rel="stylesheet" href="css/navbar.css"/>
-<link rel="stylesheet" href="css/hero.css"/>
-<link rel="stylesheet" href="css/projects.css"/>
-<link rel="stylesheet" href="css/skills.css"/>
-<link rel="stylesheet" href="css/services.css"/>
-<link rel="stylesheet" href="css/about.css"/>
-<link rel="stylesheet" href="css/contact.css"/>
-<link rel="stylesheet" href="css/footer.css"/>
 </head>
-<body class="bg-surface text-on-surface">
+<body class="bg-surface text-on-surface antialiased">
+
+<!-- Preloader -->
+<div id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+        <div class="preloader-mark">MA</div>
+        <div class="preloader-bar"><span></span></div>
+        <div class="preloader-text mono-label">booting portfolio<span class="blink">_</span></div>
+    </div>
+</div>
+
+<!-- Ambient background -->
+<div class="bg-layers" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="bg-noise"></div>
+</div>
+<div id="cursor-glow" aria-hidden="true"></div>
+<div id="scroll-progress" aria-hidden="true"></div>
 
 <!-- Main App Container -->
 <div id="app">
-    <div id="navbar"></div>
+    <div id="slot-navbar"></div>
     <main>
-        <div id="hero"></div>
-        <div id="about"></div>
-        <div id="projects"></div>
-        <div id="services"></div>
-        <div id="skills"></div>
-        <!-- <div id="philosophy"></div> -->
-        <div id="career"></div>
-        <div id="education"></div>
-        <div id="contact"></div>
-        <!-- <div id="cta"></div> -->
+        <div id="slot-hero"></div>
+        <div id="slot-about"></div>
+        <div id="slot-career"></div>
+        <div id="slot-certifications"></div>
+        <div id="slot-projects"></div>
+        <div id="slot-skills"></div>
+        <div id="slot-services"></div>
+        <div id="slot-contact"></div>
     </main>
-    <div id="footer"></div>
+    <div id="slot-footer"></div>
+</div>
+
+<!-- Interactive terminal (open with the terminal icon or Ctrl+K) -->
+<div id="terminal-modal" class="terminal-modal" role="dialog" aria-modal="true" aria-label="Interactive terminal">
+    <div class="terminal-window">
+        <div class="terminal-bar">
+            <div class="flex gap-2">
+                <button class="dot dot-red" data-terminal-close aria-label="Close terminal"></button>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+            </div>
+            <span class="mono-label text-xs text-on-surface-variant">monem@portfolio: ~</span>
+            <span class="mono-label text-[10px] text-outline hidden sm:inline">ESC to close</span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <div id="terminal-output"></div>
+            <form id="terminal-form" class="terminal-line-input">
+                <span class="text-primary">➜</span>
+                <span class="text-tertiary">~</span>
+                <input id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input"/>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- Scripts -->
 <script src="js/config.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/main.js"></script>
 
 </body>

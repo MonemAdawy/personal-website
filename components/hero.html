@@ -1,99 +1,144 @@
 <!-- Hero Section -->
-<!-- <section id="hero" class="min-h-screen flex flex-col justify-center px-8 max-w-7xl mx-auto pt-32">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<section id="hero" class="hero-section">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 items-center">
+
+        <!-- Copy -->
         <div class="lg:col-span-7 space-y-8">
-            <div class="flex items-center space-x-3">
-                <span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
-                <span class="mono-label text-primary text-sm tracking-widest uppercase">● SYSTEM_ACTIVE</span>
+            <div class="reveal" style="--d:.05s">
+                <span class="status-pill">
+                    <span class="status-dot"></span>
+                    Open to freelance &amp; new collaborations
+                </span>
             </div>
-            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter leading-none text-on-surface">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">SOFTWARE </span>ENGINEER. <br/>
-            </h1>
-            <p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-                Enjoy transforming ideas into functional applications and always seek to expand my knowledge to deliver modern, efficient, and scalable solutions.
+
+            <div class="space-y-5">
+                <p class="reveal mono-label text-sm text-on-surface-variant" style="--d:.12s">
+                    Hi, I'm <span class="text-on-surface font-semibold">Monem Adawy</span> — Backend Engineer
+                </p>
+                <h1 class="hero-title reveal" style="--d:.2s">
+                    Backends that
+                    <span class="rotator" id="hero-rotator" aria-live="polite">
+                        <span class="rotator-word text-gradient is-active">scale.</span>
+                        <span class="rotator-word text-gradient">stay secure.</span>
+                        <span class="rotator-word text-gradient">ship fast.</span>
+                        <span class="rotator-word text-gradient">just work.</span>
+                    </span>
+                </h1>
+            </div>
+
+            <p class="reveal text-lg sm:text-xl text-on-surface-variant max-w-xl leading-relaxed" style="--d:.3s">
+                Node.js &amp; NestJS specialist designing secure APIs, clean architectures,
+                and production systems that stay fast under real-world load.
             </p>
-            <div class="flex items-center space-x-6 pt-4">
-                <button class="signature-gradient text-on-primary px-8 py-4 rounded-md font-bold text-lg hover:brightness-110 transition-all" onclick="initializeProject()">
-                    Initialize Project
-                </button>
-                <a class="text-primary mono-label text-sm hover:underline decoration-2 underline-offset-8 transition-all cursor-pointer" onclick="scrollToSection('projects')">
-                    _View_Capabilities
+
+            <div class="reveal flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4" style="--d:.38s">
+                <a class="btn btn-primary magnetic" href="#projects">
+                    View my work
+                    <span class="material-symbols-outlined">arrow_downward</span>
                 </a>
-                <a class="text-primary mono-label text-sm hover:underline decoration-2 underline-offset-8 transition-all cursor-pointer" href="https://drive.google.com/file/d/1ZEu4qnduKk6VBfgbyiKB27UPi69Ni2_I/view?usp=sharing">
-                    _Download_CV
+                <a class="btn btn-ghost magnetic" href="https://drive.google.com/file/d/1ZEu4qnduKk6VBfgbyiKB27UPi69Ni2_I/view?usp=sharing" target="_blank" rel="noopener">
+                    <span class="material-symbols-outlined">description</span>
+                    Download CV
                 </a>
+                <div class="flex items-center gap-2 sm:ml-2">
+                    <a class="icon-btn" href="https://github.com/MonemAdawy" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+                    </a>
+                    <a class="icon-btn" href="https://www.linkedin.com/in/abdelmonem-mahmoud/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+                    </a>
+                    <a class="icon-btn" href="mailto:abdoadwy208@gmail.com" aria-label="Email">
+                        <span class="material-symbols-outlined text-[1.1rem]">mail</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats (filled from live data where possible) -->
+            <div class="reveal grid grid-cols-3 gap-4 sm:gap-8 pt-8 border-t border-white/5 max-w-xl" style="--d:.46s">
+                <div>
+                    <div class="hero-stat-value"><span data-count="3" id="stat-roles">3</span></div>
+                    <div class="hero-stat-label">Engineering roles</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value"><span id="stat-projects" data-count="0">—</span><span class="text-primary">+</span></div>
+                    <div class="hero-stat-label">Projects shipped</div>
+                </div>
+                <div>
+                    <div class="hero-stat-value"><span id="stat-tech" data-count="0">—</span><span class="text-primary">+</span></div>
+                    <div class="hero-stat-label">Technologies</div>
+                </div>
             </div>
         </div>
-        <div class="hidden lg:block lg:col-span-5">
-            <div class="relative w-full aspect-square rounded-xl overflow-hidden ghost-border bg-surface-container-low p-2">
-                <img alt="Server Infrastructure" class="w-full h-full object-cover rounded-lg opacity-95 mix-blend-screen hero-image" src="./assets/images/server-rack.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
-                <div class="absolute bottom-4 left-4 mono-label text-[10px] text-primary/50 uppercase tracking-[0.3em]">
-                    UID: 882-SYS-ARCH
+
+        <!-- Visual -->
+        <div class="lg:col-span-5 reveal" style="--d:.25s">
+            <div class="portrait-wrap max-w-[420px] mx-auto lg:ml-auto lg:mr-6">
+                <div class="portrait" id="portrait">
+                    <div class="portrait-inner">
+                        <img src="assets/images/myPhoto22.jpeg" alt="Portrait of Monem Adawy" fetchpriority="high"/>
+                        <div class="portrait-caption">
+                            <div class="mono-label text-[10px] tracking-[0.2em] uppercase text-primary mb-1">Currently</div>
+                            <div class="font-headline text-lg font-semibold tracking-tight">Backend Developer @ DataSoft</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="float-chip" style="top:7%;right:-1.75rem;--fd:-1s">
+                    <span class="ico" style="background:rgba(63,255,139,.14);color:#3fff8b">JS</span>
+                    Node.js
+                </div>
+                <div class="float-chip" style="top:34%;left:-2.25rem;--fd:-3s">
+                    <span class="ico" style="background:rgba(234,40,69,.16);color:#ff6b81">N</span>
+                    NestJS
+                </div>
+                <div class="float-chip hidden sm:flex" style="bottom:22%;right:-2.5rem;--fd:-4.5s">
+                    <span class="ico" style="background:rgba(122,230,255,.14);color:#7ae6ff">PG</span>
+                    PostgreSQL
+                </div>
+
+                <div class="code-card" aria-hidden="true">
+                    <div class="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/5">
+                        <span class="dot dot-red" style="width:9px;height:9px"></span>
+                        <span class="dot dot-yellow" style="width:9px;height:9px"></span>
+                        <span class="dot dot-green" style="width:9px;height:9px"></span>
+                        <span class="mono-label text-[10px] text-outline ml-2">engineer.ts</span>
+                    </div>
+<pre><span class="tok-k">const</span> <span class="tok-v">monem</span> <span class="tok-p">=</span> {
+  role: <span class="tok-s">'Backend Engineer'</span>,
+  stack: [<span class="tok-s">'Node'</span>, <span class="tok-s">'NestJS'</span>, <span class="tok-s">'SQL'</span>],
+  focus: <span class="tok-s">'secure, scalable APIs'</span>,
+  coffee: <span class="tok-n">Infinity</span>,
+};</pre>
                 </div>
             </div>
         </div>
     </div>
-</section> -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Hero Section -->
-<section id="hero" class="min-h-screen flex flex-col justify-center px-8 max-w-7xl mx-auto pt-32">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        <div class="lg:col-span-7 space-y-6 lg:space-y-8">
-            <div class="flex items-center space-x-3">
-                <span class="w-2 h-2 lg:w-3 lg:h-3 rounded-full bg-primary animate-pulse"></span>
-                <span class="mono-label text-primary text-[0.7rem] lg:text-sm tracking-widest uppercase">● SYSTEM_ACTIVE</span>
-            </div>
-            
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tighter leading-tight lg:leading-none text-on-surface">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">SOFTWARE </span>
-                <span class="block sm:inline">ENGINEER.</span>
-            </h1>
-            
-            <p class="text-base sm:text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-                Enjoy transforming ideas into functional applications and always seek to expand my knowledge to deliver modern, efficient, and scalable solutions.
-            </p>
-            
-            <!-- Mobile-friendly button container -->
-            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 pt-4">
-                <button class="signature-gradient text-on-primary px-6 sm:px-8 py-3 sm:py-4 rounded-md font-bold text-base sm:text-lg hover:brightness-110 transition-all w-full sm:w-auto" onclick="initializeProject()">
-                    Initialize Project
-                </button>
-                
-                <div class="flex flex-wrap gap-4 sm:gap-6">
-                    <a class="text-primary mono-label text-xs sm:text-sm hover:underline decoration-2 underline-offset-8 transition-all cursor-pointer" onclick="scrollToSection('projects')">
-                        _View_Projects
-                    </a>
-                    <a class="text-primary mono-label text-xs sm:text-sm hover:underline decoration-2 underline-offset-8 transition-all cursor-pointer" href="https://drive.google.com/file/d/1ZEu4qnduKk6VBfgbyiKB27UPi69Ni2_I/view?usp=sharing">
-                        _Download_CV
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="hidden lg:block lg:col-span-5">
-            <div class="relative w-full aspect-square rounded-xl overflow-hidden ghost-border bg-surface-container-low p-2">
-                <img alt="Server Infrastructure" class="w-full h-full object-cover rounded-lg opacity-95 mix-blend-screen hero-image" src="./assets/images/server-rack.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
-                <div class="absolute bottom-4 left-4 mono-label text-[10px] text-primary/50 uppercase tracking-[0.3em]">
-                    UID: 882-MONEM-ADAWY
-                </div>
-            </div>
-        </div>
+    <div class="hidden md:flex justify-center mt-16">
+        <a href="#about" class="scroll-cue" aria-label="Scroll to about">
+            <span class="mouse"></span>
+            <span class="mono-label tracking-[0.2em] uppercase">Scroll</span>
+        </a>
     </div>
 </section>
+
+<!-- Tech marquee -->
+<div class="marquee" aria-label="Technologies I work with">
+    <div class="marquee-track" id="marquee-track">
+        <span class="marquee-item">Node.js</span>
+        <span class="marquee-item">NestJS</span>
+        <span class="marquee-item">TypeScript</span>
+        <span class="marquee-item">Express.js</span>
+        <span class="marquee-item">PostgreSQL</span>
+        <span class="marquee-item">MongoDB</span>
+        <span class="marquee-item">MySQL</span>
+        <span class="marquee-item">Redis</span>
+        <span class="marquee-item">Docker</span>
+        <span class="marquee-item">Microservices</span>
+        <span class="marquee-item">Apache Kafka</span>
+        <span class="marquee-item">JWT &amp; OAuth</span>
+        <span class="marquee-item">Stripe</span>
+        <span class="marquee-item">WebSockets</span>
+        <span class="marquee-item">Unit Testing</span>
+    </div>
+</div>

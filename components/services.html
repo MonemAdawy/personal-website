@@ -1,101 +1,39 @@
-<!-- Services Section -->
-<section class="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-surface-container" id="services">
-    <div class="max-w-7xl mx-auto">
-        
-        <!-- Header - Responsive -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8 mb-12 md:mb-16 lg:mb-20">
-            <div class="flex-1">
-                <p class="mono-label text-primary text-[0.7rem] sm:text-xs tracking-widest uppercase mb-2 sm:mb-4">/professional_services</p>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter break-words">
-                    SOLUTIONS_ARCH
-                </h2>
-            </div>
-            <p class="text-on-surface-variant text-sm sm:text-base max-w-md md:max-w-sm lg:max-w-md leading-relaxed">
-                End-to-end backend engineering for businesses that require extreme reliability and performance.
-            </p>
+<!-- Services Section (static cards are replaced by js/service/service.retrieve.js) -->
+<section class="section" id="services">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div class="space-y-6">
+            <p class="eyebrow reveal">Services</p>
+            <h2 class="section-title reveal" style="--d:.08s">How I can <span class="text-gradient">help you.</span></h2>
         </div>
-        
-        <!-- Services Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12" id="services-grid">
-            
-            <!-- Service 1 - API Design -->
-            <div class="service-card group p-4 sm:p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-highest" data-service="api">
-                <div class="w-12 h-1 bg-primary mb-4 md:mb-6 group-hover:w-16 transition-all duration-300"></div>
-                
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 md:mb-4 break-words">API Design &amp; Development</h3>
-                
-                <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-4 md:mb-6">
-                    Designing clean, documented, and secure API surfaces using REST, GraphQL, or gRPC protocols for seamless integration.
-                </p>
-                
-                <ul class="mono-label text-[0.7rem] sm:text-xs space-y-2 md:space-y-3 text-on-surface">
-                    <li class="flex items-start gap-2">
-                        <span class="text-primary flex-shrink-0">&gt;&gt;</span>
-                        <span class="break-words">OAuth2 Implementation</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-primary flex-shrink-0">&gt;&gt;</span>
-                        <span class="break-words">Payload Optimization</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-primary flex-shrink-0">&gt;&gt;</span>
-                        <span class="break-words">Auto-Doc Generation</span>
-                    </li>
-                </ul>
+        <p class="section-lead reveal md:max-w-sm" style="--d:.16s">
+            End-to-end backend engineering for products that need to be reliable, secure and ready to grow.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="services-grid">
+        <div class="glass spot lift service-card p-7 flex flex-col gap-5 reveal">
+            <div class="flex items-start justify-between">
+                <div class="bento-icon"><span class="material-symbols-outlined">api</span></div>
+                <span class="service-num">01</span>
             </div>
-            
-            <!-- Service 2 - Database Optimization -->
-            <div class="service-card group p-4 sm:p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-highest" data-service="database">
-                <div class="w-12 h-1 bg-secondary mb-4 md:mb-6 group-hover:w-16 transition-all duration-300"></div>
-                
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 md:mb-4 break-words">Database Optimization</h3>
-                
-                <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-4 md:mb-6">
-                    Schema design and query tuning to ensure your data stays accessible and fast as your user base grows into the millions.
-                </p>
-                
-                <ul class="mono-label text-[0.7rem] sm:text-xs space-y-2 md:space-y-3 text-on-surface">
-                    <li class="flex items-start gap-2">
-                        <span class="text-secondary flex-shrink-0">&gt;&gt;</span>
-                        <span class="break-words">Index Auditing</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-secondary flex-shrink-0">&gt;&gt;</span>
-                        <span class="break-words">Sharding Strategies</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-secondary flex-shrink-0">&gt;&gt;</span>
-                        <span class="break-words">Caching Layers</span>
-                    </li>
-                </ul>
+            <h3 class="text-xl font-semibold tracking-tight">API Design &amp; Development</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Clean, documented and secure REST APIs built for seamless integration.</p>
+        </div>
+        <div class="glass spot lift service-card p-7 flex flex-col gap-5 reveal" style="--d:.08s">
+            <div class="flex items-start justify-between">
+                <div class="bento-icon" style="--c:#7ae6ff"><span class="material-symbols-outlined">database</span></div>
+                <span class="service-num">02</span>
             </div>
-            
-            <!-- Service 3 - Infrastructure Management -->
-            <div class="service-card group p-4 sm:p-6 rounded-lg transition-all duration-300 hover:bg-surface-container-highest" data-service="infrastructure">
-                <div class="w-12 h-1 bg-tertiary mb-4 md:mb-6 group-hover:w-16 transition-all duration-300"></div>
-                
-                <h3 class="text-xl sm:text-2xl font-bold mb-2 md:mb-4 break-words">Infrastructure Management</h3>
-                
-                <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-4 md:mb-6">
-                    Managing cloud environments with Terraform and Kubernetes to provide 99.9% uptime and auto-scaling capabilities.
-                </p>
-                
-                <ul class="mono-label text-[0.7rem] sm:text-xs space-y-2 md:space-y-3 text-on-surface">
-                    <li class="flex items-start gap-2">
-                        <span class="text-tertiary flex-shrink-0">&gt;&gt;</span>
-                        <span class="break-words">IaC (Terraform)</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-tertiary flex-shrink-0">&gt;&gt;</span>
-                        <span class="break-words">Containerization</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-tertiary flex-shrink-0">&gt;&gt;</span>
-                        <span class="break-words">Observability Setup</span>
-                    </li>
-                </ul>
+            <h3 class="text-xl font-semibold tracking-tight">Database Design</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Schema design and query tuning so your data stays fast as your user base grows.</p>
+        </div>
+        <div class="glass spot lift service-card p-7 flex flex-col gap-5 reveal" style="--d:.16s">
+            <div class="flex items-start justify-between">
+                <div class="bento-icon" style="--c:#a78bfa"><span class="material-symbols-outlined">shield_lock</span></div>
+                <span class="service-num">03</span>
             </div>
-            
+            <h3 class="text-xl font-semibold tracking-tight">Authentication &amp; Security</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Securing applications with modern authentication and protection techniques.</p>
         </div>
     </div>
 </section>

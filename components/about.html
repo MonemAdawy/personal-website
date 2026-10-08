@@ -1,36 +1,74 @@
 <!-- About / Personal Background Section -->
-<section class="py-32 px-8 max-w-7xl mx-auto" id="about">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div class="bg-surface-container-low p-12 rounded-lg border border-outline-variant/10">
-            <div class="mono-label text-primary text-sm mb-6 flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm">settings_input_component</span>
-                _CORE_LOGIC
+<section class="section" id="about">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
+        <!-- Story -->
+        <div class="lg:col-span-6 space-y-8">
+            <p class="eyebrow reveal">About me</p>
+            <h2 class="section-title reveal" style="--d:.08s">
+                Turning complex ideas into <span class="text-gradient">reliable backend systems.</span>
+            </h2>
+            <div class="space-y-5 text-on-surface-variant text-[1.05rem] leading-relaxed reveal" style="--d:.16s">
+                <p>
+                    I'm a Backend Developer specializing in <span class="text-on-surface font-medium">Node.js</span>,
+                    focused on building scalable APIs and secure systems.
+                </p>
+                <p>
+                    I've built real-world systems — <span class="text-on-surface font-medium">e-commerce, social media and job platforms</span> —
+                    with authentication (JWT, OAuth), thoughtful database design, performance optimization, and integrations
+                    like payments, cloud storage, and email services.
+                </p>
+                <p>What I enjoy most: taking a messy problem and shaping it into an architecture that's simple to reason about and hard to break.</p>
             </div>
-            <h3 class="text-3xl font-headline font-bold mb-6 tracking-tighter uppercase">Beyond the Terminal</h3>
-            <div class="space-y-4 text-on-surface-variant leading-relaxed font-body">
-                <p>Backend Developer specializing in Node.js, focused on building scalable APIs and secure systems.</p>
-                <p>Experienced in authentication (JWT, OAuth), database design, and performance optimization. I’ve built real-world systems including e-commerce, social media, and job platforms with integrations like payments, cloud storage, and email services.</p>
-                <p>I enjoy turning complex ideas into reliable backend architectures.</p>
-            </div>
-            <div class="mt-8 pt-8 border-t border-outline-variant/10 flex gap-12">
-                <div>
-                    <div class="mono-label text-xs text-primary mb-1 uppercase tracking-widest">Base_Location</div>
-                    <div class="font-bold uppercase tracking-tighter">Egypt, Cairo</div>
+
+            <div class="grid grid-cols-2 gap-3 reveal" style="--d:.24s">
+                <div class="glass fact">
+                    <div class="fact-label">Based in</div>
+                    <div class="fact-value">Cairo, Egypt</div>
                 </div>
-                <div>
-                    <div class="mono-label text-xs text-primary mb-1 uppercase tracking-widest">System_Active</div>
-                    <div class="font-bold uppercase tracking-tighter" id="live-clock">04:12:00 UTC</div>
+                <div class="glass fact">
+                    <div class="fact-label">Local time</div>
+                    <div class="fact-value mono-label text-[0.95rem]" id="live-clock">--:--:--</div>
+                </div>
+                <div class="glass fact">
+                    <div class="fact-label">Focus</div>
+                    <div class="fact-value">APIs &amp; Architecture</div>
+                </div>
+                <div class="glass fact">
+                    <div class="fact-label">Work mode</div>
+                    <div class="fact-value">On-site · Remote</div>
                 </div>
             </div>
         </div>
-        <div class="relative group h-full min-h-[400px]">
-            <div class="absolute inset-0 bg-surface-container-low rounded-lg overflow-hidden">
-                <img alt="Brutalist architecture" class="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 transition-transform duration-1000 about-image" src="assets/images/myPhoto2.jpeg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+
+        <!-- What I bring (bento) -->
+        <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 content-start">
+            <div class="glass spot lift p-6 space-y-4 reveal" style="--d:.1s">
+                <div class="bento-icon"><span class="material-symbols-outlined">shield_lock</span></div>
+                <h3 class="text-lg font-semibold tracking-tight">Secure by default</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">JWT &amp; refresh tokens, OAuth, role-based access control and validation baked into the design.</p>
             </div>
-            <div class="absolute bottom-12 left-12 right-12">
-                <div class="mono-label text-[10px] text-primary mb-2 uppercase tracking-widest">Visual_Reference</div>
-                <h4 class="text-2xl font-headline font-bold leading-none tracking-tighter uppercase italic">"Logic is the foundation of all meaningful creation."</h4>
+            <div class="glass spot lift p-6 space-y-4 reveal" style="--d:.18s">
+                <div class="bento-icon" style="--c:#7ae6ff"><span class="material-symbols-outlined">database</span></div>
+                <h3 class="text-lg font-semibold tracking-tight">Data that holds up</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Schema design across PostgreSQL, MySQL and MongoDB, with indexing and caching where it counts.</p>
+            </div>
+            <div class="glass spot lift p-6 space-y-4 reveal" style="--d:.26s">
+                <div class="bento-icon" style="--c:#a78bfa"><span class="material-symbols-outlined">bolt</span></div>
+                <h3 class="text-lg font-semibold tracking-tight">Performance minded</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Redis caching, pagination, and lean queries to keep response times low as traffic grows.</p>
+            </div>
+            <div class="glass spot lift p-6 space-y-4 reveal" style="--d:.34s">
+                <div class="bento-icon" style="--c:#74fbbb"><span class="material-symbols-outlined">hub</span></div>
+                <h3 class="text-lg font-semibold tracking-tight">Integrations</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Stripe payments, cloud storage, email, WebSockets and message queues like Kafka.</p>
+            </div>
+            <div class="glass spot sm:col-span-2 p-7 reveal relative overflow-hidden" style="--d:.42s">
+                <span class="material-symbols-outlined absolute -right-2 -top-4 text-[8rem] text-white/[0.03] select-none" aria-hidden="true">format_quote</span>
+                <p class="font-headline text-xl sm:text-2xl font-medium tracking-tight leading-snug">
+                    “Logic is the foundation of all meaningful creation.”
+                </p>
+                <p class="mono-label text-xs text-on-surface-variant mt-3">— the principle I build by</p>
             </div>
         </div>
     </div>
