@@ -703,6 +703,7 @@ kbd {
 }
 
 .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2.75rem, 7.4vw, 6rem);
     font-weight: 700;
     line-height: 0.98;
