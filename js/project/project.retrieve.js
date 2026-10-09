@@ -16,7 +16,7 @@ export async function loadProjects() {
     const first = await pager.next();
     getProjectsGrid().innerHTML = "";
     showProjects(first);
-    mountLoadMore(document.getElementById("projects-actions"), pager, showProjects, "More projects");
+    mountLoadMore(document.getElementById("projects-actions"), getProjectsGrid(), pager, showProjects, "More projects");
   } catch (err) {
     console.error("Error fetching projects:", err);
     renderError();

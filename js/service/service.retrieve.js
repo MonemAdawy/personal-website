@@ -34,7 +34,7 @@ export async function loadServices() {
 
     getServicesGrid().innerHTML = "";
     showServices(first);
-    mountLoadMore(document.getElementById("services-actions"), pager, showServices, "More services");
+    mountLoadMore(document.getElementById("services-actions"), getServicesGrid(), pager, showServices, "More services");
   } catch (err) {
     console.error("Error fetching services:", err);
   }

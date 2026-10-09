@@ -34,7 +34,7 @@ export async function loadSkills() {
     const first = await pager.next();
     skillsGrid.innerHTML = "";
     showSkills(first);
-    mountLoadMore(document.getElementById("skills-actions"), pager, showSkills, "More skills");
+    mountLoadMore(document.getElementById("skills-actions"), skillsGrid, pager, showSkills, "More skills");
   } catch (err) {
     console.error("Error loading skills:", err);
     skillsGrid.innerHTML = `

@@ -37,40 +37,73 @@ export function createPager(path, limit) {
   };
 }
 
-// Puts a "Load more" button in `host` that appends pages via `onPage`
-// and hides itself once the pager runs dry.
-export function mountLoadMore(host, pager, onPage, label = "Load more") {
-  if (!host) return;
+// Puts "More" / "Less" buttons in `host` for the cards in `grid`.
+// "More" appends the next page via `onPage` (or re-shows a page hidden by
+// "Less" without refetching); "Less" hides the most recently shown page.
+export function mountLoadMore(host, grid, pager, onPage, label = "Load more") {
+  if (!host || !grid) return;
 
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "btn btn-ghost";
-  button.hidden = true;
-  const idle = `${label} <span class="material-symbols-outlined">expand_more</span>`;
-  button.innerHTML = idle;
-  host.prepend(button);
-
-  const sync = async () => {
-    button.hidden = !(await pager.hasMore());
-    // Collapse the host's spacing too when the button is all it holds
-    if (host.childElementCount === 1) host.hidden = button.hidden;
+  const makeButton = (html) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn btn-ghost";
+    button.hidden = true;
+    button.innerHTML = html;
+    return button;
   };
 
-  button.addEventListener("click", async () => {
-    button.disabled = true;
-    button.setAttribute("aria-busy", "true");
-    button.innerHTML = `Loading <span class="material-symbols-outlined">progress_activity</span>`;
+  const moreIdle = `${label} <span class="material-symbols-outlined">expand_more</span>`;
+  const more = makeButton(moreIdle);
+  const less = makeButton(`Show less <span class="material-symbols-outlined">expand_less</span>`);
+  host.prepend(more, less);
+
+  // Cards of every page after the first, oldest first; `shown` of them are visible
+  const pages = [];
+  let shown = 0;
+
+  const setPageVisible = (cards, visible) => {
+    cards.forEach((card) => { card.style.display = visible ? "" : "none"; });
+  };
+
+  const sync = async () => {
+    less.hidden = shown === 0;
+    more.hidden = shown === pages.length && !(await pager.hasMore());
+    // Collapse the host's spacing too when the buttons are all it holds
+    if (host.childElementCount === 2) host.hidden = more.hidden && less.hidden;
+  };
+
+  more.addEventListener("click", async () => {
+    if (shown < pages.length) {
+      setPageVisible(pages[shown++], true);
+      await sync();
+      return;
+    }
+
+    more.disabled = true;
+    more.setAttribute("aria-busy", "true");
+    more.innerHTML = `Loading <span class="material-symbols-outlined">progress_activity</span>`;
     try {
+      const before = grid.children.length;
       onPage(await pager.next());
+      pages.push([...grid.children].slice(before));
+      shown++;
     } catch (err) {
       console.error("Error loading more:", err);
       window.showToast?.("Couldn't load more right now", "error");
     } finally {
-      button.disabled = false;
-      button.removeAttribute("aria-busy");
-      button.innerHTML = idle;
+      more.disabled = false;
+      more.removeAttribute("aria-busy");
+      more.innerHTML = moreIdle;
       await sync();
     }
+  });
+
+  less.addEventListener("click", async () => {
+    if (!shown) return;
+    setPageVisible(pages[--shown], false);
+    await sync();
+    // The grid just got shorter, so bring the buttons back into view
+    host.scrollIntoView({ behavior: "smooth", block: "end" });
   });
 
   sync();
