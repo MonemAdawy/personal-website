@@ -40,7 +40,7 @@ async function loadComponent(slotId, componentPath) {
 
 // Initialize All Components
 async function initializeApp() {
-    const components = ['navbar', 'hero', 'about', 'career', 'certifications', 'projects', 'skills', 'services', 'contact', 'footer'];
+    const components = ['navbar', 'hero', 'about', 'career', 'education', 'certifications', 'projects', 'skills', 'services', 'contact', 'footer'];
 
     // Fetch in parallel; each lands in its own slot
     await Promise.all(components.map((name) => loadComponent(`slot-${name}`, `components/${name}.html`)));
@@ -419,6 +419,7 @@ const terminalCommands = {
         '  <span class="text-primary">about</span>       who I am',
         '  <span class="text-primary">experience</span>  where I have worked',
         '  <span class="text-primary">projects</span>    things I have built',
+        '  <span class="text-primary">education</span>   where I studied',
         '  <span class="text-primary">certs</span>       my certifications',
         '  <span class="text-primary">skills</span>      my toolbox',
         '  <span class="text-primary">contact</span>     how to reach me',
@@ -436,6 +437,7 @@ const terminalCommands = {
         '<span class="text-tertiary">Oct 2025 — now</span>   Backend Node.js · Elevate Tech',
         '<span class="text-tertiary">Aug — Oct 2025</span>   MEAN Stack Developer · NTI'
     ].join('\n'),
+    education: () => '<span class="text-tertiary">Oct 2022 — Jul 2026</span>   B.Sc. Computer Science · Cairo University',
     projects: () => {
         const projects = window.portfolioData.projects;
         if (!projects.length) return 'Projects are still loading… try again in a second.';
@@ -465,7 +467,7 @@ const terminalCommands = {
     linkedin: () => { window.open('https://www.linkedin.com/in/abdelmonem-mahmoud/', '_blank', 'noopener'); return 'Opening LinkedIn…'; },
     hire: () => { setTimeout(() => { closeTerminal(); showHireModal(); }, 500); return 'Great choice. Taking you to the contact form…'; },
     'sudo hire-me': () => terminalCommands.hire(),
-    ls: () => 'about  experience  projects  skills  contact  cv',
+    ls: () => 'about  experience  education  projects  skills  contact  cv',
     date: () => new Date().toString(),
     clear: () => { document.getElementById('terminal-output').innerHTML = ''; return null; },
     exit: () => { closeTerminal(); return null; }
