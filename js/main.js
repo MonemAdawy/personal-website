@@ -433,9 +433,9 @@ const terminalCommands = {
     about: () => 'Monem Adawy — Backend Engineer based in Cairo, Egypt.\nI build scalable APIs and secure systems with Node.js & NestJS:\nauth (JWT, OAuth), database design, caching, payments and more.',
     whoami: () => terminalCommands.about(),
     experience: () => [
-        '<span class="text-tertiary">Jun 2026 — now</span>   Backend Developer · DataSoft',
-        '<span class="text-tertiary">Oct 2025 — now</span>   Backend Node.js · Elevate Tech',
-        '<span class="text-tertiary">Aug — Oct 2025</span>   MEAN Stack Developer · NTI'
+        '<span class="text-tertiary">Jun 2026 — now</span>        Backend Developer · DataSoft',
+        '<span class="text-tertiary">Oct 2025 — Aug 2026</span>   Backend Node.js · Elevate Tech',
+        '<span class="text-tertiary">Aug — Oct 2025</span>        MEAN Stack Developer · NTI'
     ].join('\n'),
     education: () => '<span class="text-tertiary">Oct 2022 — Jul 2026</span>   B.Sc. Computer Science · Cairo University',
     projects: () => {
