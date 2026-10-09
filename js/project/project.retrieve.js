@@ -1,22 +1,33 @@
+import { createPager, mountLoadMore } from "../utils/paginate.js";
+
 const getProjectsGrid = () => document.getElementById("projects-grid");
 const esc = (v) => window.escapeHTML(v);
 
 const MAX_POINTS = 4;
 
 // ================= FETCH =================
-export async function loadProjects() {
-  try {
-    const res = await fetch(`${window.API_BASE_URL}/projects`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const projects = await res.json();
+// 3 per page keeps the featured rhythm intact: one wide card, then a pair
+const PAGE_SIZE = 3;
+const loadedProjects = [];
 
-    window.portfolioData.projects = projects;
-    window.setStat?.("stat-projects", projects.length);
-    renderProjects(projects);
+export async function loadProjects() {
+  const pager = createPager("/projects", PAGE_SIZE);
+  try {
+    const first = await pager.next();
+    getProjectsGrid().innerHTML = "";
+    showProjects(first);
+    mountLoadMore(document.getElementById("projects-actions"), pager, showProjects, "More projects");
   } catch (err) {
     console.error("Error fetching projects:", err);
     renderError();
   }
+}
+
+function showProjects({ items, total }) {
+  loadedProjects.push(...items);
+  window.portfolioData.projects = loadedProjects;
+  window.setStat?.("stat-projects", total ?? loadedProjects.length);
+  renderProjects(items, loadedProjects.length - items.length);
 }
 
 // ================= RENDER =================
@@ -28,7 +39,8 @@ function toPoints(description = "") {
     .filter(Boolean);
 }
 
-function renderProjects(projects) {
+// Appends a page of cards; `offset` keeps numbering and layout continuous
+function renderProjects(projects, offset = 0) {
   const grid = getProjectsGrid();
 
   if (!grid) {
@@ -36,11 +48,10 @@ function renderProjects(projects) {
     return;
   }
 
-  grid.innerHTML = "";
-
-  projects.forEach((project, index) => {
+  projects.forEach((project, i) => {
+    const index = offset + i;
     // Every third card spans the full row for a featured rhythm
-    const featured = index % 3 === 0 && projects.length > 1;
+    const featured = index % 3 === 0 && (index > 0 || projects.length > 1);
     const images = project.images || [];
     const cover = images[0]?.secure_url;
     const points = toPoints(project.description);
@@ -121,13 +132,13 @@ function renderProjects(projects) {
   // Open the gallery from the cover or the Screenshots button
   grid.onclick = (e) => {
     const trigger = e.target.closest("[data-gallery]");
-    if (trigger) openCarousel(projects[Number(trigger.dataset.gallery)].images);
+    if (trigger) openCarousel(loadedProjects[Number(trigger.dataset.gallery)].images);
   };
   grid.onkeydown = (e) => {
     const trigger = e.target.closest("[data-gallery]");
     if (trigger && (e.key === "Enter" || e.key === " ")) {
       e.preventDefault();
-      openCarousel(projects[Number(trigger.dataset.gallery)].images);
+      openCarousel(loadedProjects[Number(trigger.dataset.gallery)].images);
     }
   };
 

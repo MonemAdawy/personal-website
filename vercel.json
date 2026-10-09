@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "personal-website-eta-sable-45.vercel.app" }],
+      "destination": "https://monem-one.vercel.app/:path*",
+      "permanent": true
+    }
+  ]
+}

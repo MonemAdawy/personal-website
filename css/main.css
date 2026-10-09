@@ -350,6 +350,12 @@ body.has-pointer #cursor-glow { opacity: 1; }
 
 .btn .material-symbols-outlined { font-size: 1.15rem; }
 
+.btn:disabled { cursor: progress; opacity: 0.7; }
+
+.btn[aria-busy="true"] .material-symbols-outlined { animation: spin 0.9s linear infinite; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
 .icon-btn {
     display: inline-grid;
     place-items: center;

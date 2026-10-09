@@ -1,3 +1,5 @@
+import { createPager, mountLoadMore } from "../utils/paginate.js";
+
 const ACCENTS = ["#3fff8b", "#7ae6ff", "#a78bfa", "#74fbbb", "#ffcb6b", "#ff8fa3"];
 
 function getIcon(name) {
@@ -19,54 +21,20 @@ function getIcon(name) {
   return "terminal";
 }
 
+const PAGE_SIZE = 6;
+const loadedSkills = [];
+
 export async function loadSkills() {
   const skillsGrid = document.getElementById("skills-grid");
 
   if (!skillsGrid) return;
 
+  const pager = createPager("/skill", PAGE_SIZE);
   try {
-    const res = await fetch(`${window.API_BASE_URL}/skill`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const skills = await res.json();
-
-    window.portfolioData.skills = skills;
-    const techCount = skills.reduce((sum, s) => sum + (s.subSkills?.length || 0), 0);
-    window.setStat?.("stat-tech", techCount);
-
+    const first = await pager.next();
     skillsGrid.innerHTML = "";
-
-    skills.forEach((skill, index) => {
-      const accent = ACCENTS[index % ACCENTS.length];
-      const skillCard = document.createElement("div");
-
-      skillCard.className = "glass spot lift skill-card p-7 flex flex-col gap-5 reveal";
-      skillCard.style.setProperty("--d", `${(index % 3) * 0.08}s`);
-
-      const subSkillsHTML = skill.subSkills?.length
-        ? skill.subSkills
-            .map((sub) => `<span class="chip">${window.escapeHTML(sub.name)}</span>`)
-            .join("")
-        : "";
-
-      skillCard.innerHTML = `
-        <div class="flex items-center justify-between">
-          <div class="bento-icon" style="--c:${accent}">
-            <span class="material-symbols-outlined">${getIcon(skill.name)}</span>
-          </div>
-          <span class="mono-label text-xs text-outline">${String(skill.subSkills?.length || 0).padStart(2, "0")} tools</span>
-        </div>
-
-        <h3 class="text-lg font-semibold tracking-tight">${window.escapeHTML(skill.name)}</h3>
-
-        <div class="flex flex-wrap gap-2">
-          ${subSkillsHTML}
-        </div>
-      `;
-
-      skillsGrid.appendChild(skillCard);
-    });
-
-    window.observeReveals?.(skillsGrid);
+    showSkills(first);
+    mountLoadMore(document.getElementById("skills-actions"), pager, showSkills, "More skills");
   } catch (err) {
     console.error("Error loading skills:", err);
     skillsGrid.innerHTML = `
@@ -76,4 +44,51 @@ export async function loadSkills() {
           .join("")}
       </div>`;
   }
+}
+
+function showSkills({ items }) {
+  loadedSkills.push(...items);
+  window.portfolioData.skills = loadedSkills;
+  const techCount = loadedSkills.reduce((sum, s) => sum + (s.subSkills?.length || 0), 0);
+  window.setStat?.("stat-tech", techCount);
+  renderSkills(items, loadedSkills.length - items.length);
+}
+
+// Appends a page of cards; `offset` keeps the accent colours continuous
+function renderSkills(skills, offset = 0) {
+  const skillsGrid = document.getElementById("skills-grid");
+
+  skills.forEach((skill, i) => {
+    const index = offset + i;
+    const accent = ACCENTS[index % ACCENTS.length];
+    const skillCard = document.createElement("div");
+
+    skillCard.className = "glass spot lift skill-card p-7 flex flex-col gap-5 reveal";
+    skillCard.style.setProperty("--d", `${(index % 3) * 0.08}s`);
+
+    const subSkillsHTML = skill.subSkills?.length
+      ? skill.subSkills
+          .map((sub) => `<span class="chip">${window.escapeHTML(sub.name)}</span>`)
+          .join("")
+      : "";
+
+    skillCard.innerHTML = `
+      <div class="flex items-center justify-between">
+        <div class="bento-icon" style="--c:${accent}">
+          <span class="material-symbols-outlined">${getIcon(skill.name)}</span>
+        </div>
+        <span class="mono-label text-xs text-outline">${String(skill.subSkills?.length || 0).padStart(2, "0")} tools</span>
+      </div>
+
+      <h3 class="text-lg font-semibold tracking-tight">${window.escapeHTML(skill.name)}</h3>
+
+      <div class="flex flex-wrap gap-2">
+        ${subSkillsHTML}
+      </div>
+    `;
+
+    skillsGrid.appendChild(skillCard);
+  });
+
+  window.observeReveals?.(skillsGrid);
 }

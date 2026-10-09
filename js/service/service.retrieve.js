@@ -1,3 +1,5 @@
+import { createPager, mountLoadMore } from "../utils/paginate.js";
+
 const getServicesGrid = () => document.getElementById("services-grid");
 
 const ACCENTS = ["#3fff8b", "#7ae6ff", "#a78bfa", "#74fbbb", "#ffcb6b", "#ff8fa3"];
@@ -20,22 +22,33 @@ function getIcon(title) {
 }
 
 // ================= FETCH =================
-export async function loadServices() {
-  try {
-    const res = await fetch(`${window.API_BASE_URL}/services`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const services = await res.json();
+const PAGE_SIZE = 6;
+const loadedServices = [];
 
-    window.portfolioData.services = services;
+export async function loadServices() {
+  const pager = createPager("/services", PAGE_SIZE);
+  try {
+    const first = await pager.next();
     // Keep the static fallback cards if the API returns nothing
-    if (services.length) renderServices(services);
+    if (!first.items.length) return;
+
+    getServicesGrid().innerHTML = "";
+    showServices(first);
+    mountLoadMore(document.getElementById("services-actions"), pager, showServices, "More services");
   } catch (err) {
     console.error("Error fetching services:", err);
   }
 }
 
+function showServices({ items }) {
+  loadedServices.push(...items);
+  window.portfolioData.services = loadedServices;
+  renderServices(items, loadedServices.length - items.length);
+}
+
 // ================= RENDER =================
-function renderServices(services) {
+// Appends a page of cards; `offset` keeps numbering and accents continuous
+function renderServices(services, offset = 0) {
   const grid = getServicesGrid();
 
   if (!grid) {
@@ -43,9 +56,8 @@ function renderServices(services) {
     return;
   }
 
-  grid.innerHTML = "";
-
-  services.forEach((service, index) => {
+  services.forEach((service, i) => {
+    const index = offset + i;
     const accent = ACCENTS[index % ACCENTS.length];
     const card = document.createElement("div");
 
