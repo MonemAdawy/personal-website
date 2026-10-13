@@ -87,12 +87,17 @@ function initializeNavbar() {
         closeMobileMenu();
     });
 
-    $$('.mobile-menu-overlay .menu-items a').forEach((link) => {
+    $$('.mobile-menu-overlay a').forEach((link) => {
         link.addEventListener('click', () => closeMobileMenu());
     });
 
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileMenu();
+    });
+
+    // Matches the 1200px breakpoint where the desktop nav takes over
     window.addEventListener('resize', () => {
-        if (window.innerWidth >= 1100) closeMobileMenu();
+        if (window.innerWidth >= 1200) closeMobileMenu();
     });
 }
 

@@ -40,24 +40,40 @@
 </header>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="mobile-menu-overlay">
-    <button class="icon-btn mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
-        <span class="material-symbols-outlined">close</span>
-    </button>
-    <p class="eyebrow mb-6">Navigation</p>
-    <div class="menu-items">
-        <a href="#hero"><span>00</span>Home</a>
-        <a href="#about"><span>01</span>About</a>
-        <a href="#career"><span>02</span>Experience</a>
-        <a href="#education"><span>03</span>Education</a>
-        <a href="#certifications"><span>04</span>Certifications</a>
-        <a href="#projects"><span>05</span>Projects</a>
-        <a href="#skills"><span>06</span>Skills</a>
-        <a href="#services"><span>07</span>Services</a>
-        <a href="#contact"><span>08</span>Contact</a>
+<div id="mobile-menu" class="mobile-menu-overlay" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <div class="mobile-menu-header">
+        <a class="nav-logo" href="#hero" aria-label="Back to top">
+            <span class="nav-logo-mark">MA</span>
+            <span class="text-[0.95rem]">Monem Adawy</span>
+        </a>
+        <button class="icon-btn" id="mobileMenuClose" aria-label="Close menu">
+            <span class="material-symbols-outlined">close</span>
+        </button>
     </div>
-    <div class="mt-auto flex items-center justify-between text-sm text-on-surface-variant">
-        <span>abdoadwy208@gmail.com</span>
-        <span class="mono-label text-xs">Cairo, EG</span>
+
+    <nav class="mobile-menu-body" aria-label="Mobile">
+        <p class="eyebrow">Navigation</p>
+        <div class="menu-items">
+            <a href="#hero"><span class="menu-num">00</span><span class="menu-label">Home</span><span class="material-symbols-outlined menu-arrow">arrow_outward</span></a>
+            <a href="#about"><span class="menu-num">01</span><span class="menu-label">About</span><span class="material-symbols-outlined menu-arrow">arrow_outward</span></a>
+            <a href="#career"><span class="menu-num">02</span><span class="menu-label">Experience</span><span class="material-symbols-outlined menu-arrow">arrow_outward</span></a>
+            <a href="#education"><span class="menu-num">03</span><span class="menu-label">Education</span><span class="material-symbols-outlined menu-arrow">arrow_outward</span></a>
+            <a href="#certifications"><span class="menu-num">04</span><span class="menu-label">Certifications</span><span class="material-symbols-outlined menu-arrow">arrow_outward</span></a>
+            <a href="#projects"><span class="menu-num">05</span><span class="menu-label">Projects</span><span class="material-symbols-outlined menu-arrow">arrow_outward</span></a>
+            <a href="#skills"><span class="menu-num">06</span><span class="menu-label">Skills</span><span class="material-symbols-outlined menu-arrow">arrow_outward</span></a>
+            <a href="#services"><span class="menu-num">07</span><span class="menu-label">Services</span><span class="material-symbols-outlined menu-arrow">arrow_outward</span></a>
+            <a href="#contact"><span class="menu-num">08</span><span class="menu-label">Contact</span><span class="material-symbols-outlined menu-arrow">arrow_outward</span></a>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-footer">
+        <button class="btn btn-primary w-full justify-center" onclick="showHireModal()">
+            Hire Me
+            <span class="material-symbols-outlined">north_east</span>
+        </button>
+        <div class="mobile-menu-meta">
+            <a href="mailto:abdoadwy208@gmail.com">abdoadwy208@gmail.com</a>
+            <span class="mono-label text-xs">Cairo, EG</span>
+        </div>
     </div>
 </div>
