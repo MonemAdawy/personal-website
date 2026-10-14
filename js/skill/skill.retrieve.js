@@ -23,6 +23,7 @@ function getIcon(name) {
 
 const PAGE_SIZE = 6;
 const loadedSkills = [];
+const loadedAllSkills = [];
 
 export async function loadSkills() {
   const skillsGrid = document.getElementById("skills-grid");
@@ -30,10 +31,12 @@ export async function loadSkills() {
   if (!skillsGrid) return;
 
   const pager = createPager("/skill", PAGE_SIZE);
+  const allSkills = createPager("/skill", 300);
   try {
     const first = await pager.next();
+    const all = await allSkills.next();
     skillsGrid.innerHTML = "";
-    showSkills(first);
+    showSkills(first, all.items);
     mountLoadMore(document.getElementById("skills-actions"), skillsGrid, pager, showSkills, "More skills");
   } catch (err) {
     console.error("Error loading skills:", err);
@@ -46,11 +49,14 @@ export async function loadSkills() {
   }
 }
 
-function showSkills({ items }) {
+function showSkills({ items }, AllItems) {
   loadedSkills.push(...items);
+  loadedAllSkills.push(...AllItems);
   window.portfolioData.skills = loadedSkills;
-  const techCount = loadedSkills.reduce((sum, s) => sum + (s.subSkills?.length || 0), 0);
-  window.setStat?.("stat-tech", techCount);
+  const allTechCount = loadedAllSkills.reduce((sum, s) => sum + (s.subSkills?.length || 0), 0);
+  
+
+  window.setStat?.("stat-tech", allTechCount);
   renderSkills(items, loadedSkills.length - items.length);
 }
 

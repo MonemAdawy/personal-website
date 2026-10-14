@@ -12,10 +12,13 @@ const loadedProjects = [];
 
 export async function loadProjects() {
   const pager = createPager("/projects", PAGE_SIZE);
+  const allProjects = createPager("/projects", 200);
+
   try {
     const first = await pager.next();
+    const all = await allProjects.next();
     getProjectsGrid().innerHTML = "";
-    showProjects(first);
+    showProjects(first, all.items.length);
     mountLoadMore(document.getElementById("projects-actions"), getProjectsGrid(), pager, showProjects, "More projects");
   } catch (err) {
     console.error("Error fetching projects:", err);
@@ -23,10 +26,10 @@ export async function loadProjects() {
   }
 }
 
-function showProjects({ items, total }) {
+function showProjects({ items }, total) {
   loadedProjects.push(...items);
   window.portfolioData.projects = loadedProjects;
-  window.setStat?.("stat-projects", total ?? loadedProjects.length);
+  window.setStat?.("stat-projects", total);
   renderProjects(items, loadedProjects.length - items.length);
 }
 

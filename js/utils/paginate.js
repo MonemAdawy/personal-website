@@ -11,6 +11,22 @@ async function fetchPage(path, page, limit) {
   return Array.isArray(body) ? { items: body } : { items: body.data ?? [], total: body.total };
 }
 
+
+export function getAllProjects() {
+  const pager = createPager("/projects", 100);
+
+  const allProjects = [];
+  async function fetchAll() {
+    let page;
+    do {
+      page = await pager.next();
+      allProjects.push(...page.items);
+    } while (page.items.length > 0);
+    return allProjects;
+  }
+  return fetchAll;
+}
+
 export function createPager(path, limit) {
   let page = 1;
   let upcoming = fetchPage(path, page, limit);
