@@ -23,7 +23,6 @@ function getIcon(name) {
 
 const PAGE_SIZE = 6;
 const loadedSkills = [];
-const loadedAllSkills = [];
 
 export async function loadSkills() {
   const skillsGrid = document.getElementById("skills-grid");
@@ -34,9 +33,9 @@ export async function loadSkills() {
   const allSkills = createPager("/skill", 300);
   try {
     const first = await pager.next();
-    const all = await allSkills.next();
     skillsGrid.innerHTML = "";
-    showSkills(first, all.items);
+    showSkills(first);
+    updateTechStat(allSkills);
     mountLoadMore(document.getElementById("skills-actions"), skillsGrid, pager, showSkills, "More skills");
   } catch (err) {
     console.error("Error loading skills:", err);
@@ -49,14 +48,21 @@ export async function loadSkills() {
   }
 }
 
-function showSkills({ items }, AllItems) {
-  loadedSkills.push(...items);
-  loadedAllSkills.push(...AllItems);
-  window.portfolioData.skills = loadedSkills;
-  const allTechCount = loadedAllSkills.reduce((sum, s) => sum + (s.subSkills?.length || 0), 0);
-  
+// The stat counts tools across every skill, not just the loaded pages,
+// so it's computed once from a single large fetch
+async function updateTechStat(allPager) {
+  try {
+    const { items } = await allPager.next();
+    const allTechCount = items.reduce((sum, s) => sum + (s.subSkills?.length || 0), 0);
+    window.setStat?.("stat-tech", allTechCount);
+  } catch (err) {
+    console.error("Error loading tech count:", err);
+  }
+}
 
-  window.setStat?.("stat-tech", allTechCount);
+function showSkills({ items }) {
+  loadedSkills.push(...items);
+  window.portfolioData.skills = loadedSkills;
   renderSkills(items, loadedSkills.length - items.length);
 }
 
