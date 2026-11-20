@@ -160,6 +160,7 @@
     $('meta[name="description"]')?.setAttribute("content", lead);
     $('meta[property="og:title"]')?.setAttribute("content", `${project.title} — Monem Adawy`);
     if (project.cover) $('meta[property="og:image"]')?.setAttribute("content", project.cover);
+    describeForSearch(project, lead);
 
     let n = 0;
     const num = () => pad(++n);
@@ -317,6 +318,43 @@
     observeReveals();
     // Later re-renders (fresh data) shouldn't replay the entrance animation
     root.dataset.settled = "";
+  }
+
+  // Search engines render this page's JavaScript: give them the clean URL
+  // and structured data describing the project and its author
+  const SITE = "https://monem-one.vercel.app";
+  function describeForSearch(project, lead) {
+    const url = `${SITE}/projects/${encodeURIComponent(Model.keyOf(project))}`;
+    let canonical = $('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = url;
+    $('meta[property="og:url"]')?.setAttribute("content", url);
+
+    let ld = $("#pd-jsonld");
+    if (!ld) {
+      ld = document.createElement("script");
+      ld.type = "application/ld+json";
+      ld.id = "pd-jsonld";
+      document.head.appendChild(ld);
+    }
+    ld.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "@id": `${url}#project`,
+      name: project.title,
+      headline: project.title,
+      description: lead,
+      url,
+      image: project.images.length ? project.images.slice(0, 3) : project.cover || undefined,
+      keywords: project.techStack.join(", ") || undefined,
+      dateCreated: project.duration?.start || project.createdAt || undefined,
+      author: { "@type": "Person", "@id": `${SITE}/#person`, name: "Monem Adawy", url: `${SITE}/` },
+      isPartOf: { "@type": "WebSite", name: "Monem Adawy", url: `${SITE}/` }
+    }).replace(/</g, "\\u003c");
   }
 
   function badges(project, visibility) {
