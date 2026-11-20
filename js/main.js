@@ -60,6 +60,20 @@ async function initializeApp() {
 
     // Load dynamic content
     await loadDynamicContent();
+
+    // Sections are injected after load, so the browser couldn't honour the
+    // URL hash itself (e.g. returning from a project page to #projects)
+    // Back from a project page without the back/forward cache: the page was
+    // rebuilt, so put the visitor back where they were
+    const navType = performance.getEntriesByType('navigation')[0]?.type;
+    const savedY = Number(sessionStorage.getItem('home:scrollY'));
+    if (navType === 'back_forward' && savedY && window.scrollY < 10) {
+        window.scrollTo({ top: savedY, behavior: 'instant' });
+    } else if (location.hash.length > 1) {
+        try {
+            document.querySelector(location.hash)?.scrollIntoView({ behavior: 'instant' });
+        } catch { /* not a valid selector */ }
+    }
 }
 
 function hidePreloader() {
@@ -424,6 +438,7 @@ const terminalCommands = {
         '  <span class="text-primary">about</span>       who I am',
         '  <span class="text-primary">experience</span>  where I have worked',
         '  <span class="text-primary">projects</span>    things I have built',
+        '  <span class="text-primary">open &lt;n&gt;</span>      open project number n',
         '  <span class="text-primary">education</span>   where I studied',
         '  <span class="text-primary">certs</span>       my certifications',
         '  <span class="text-primary">skills</span>      my toolbox',
@@ -448,7 +463,7 @@ const terminalCommands = {
         if (!projects.length) return 'Projects are still loading… try again in a second.';
         return projects
             .map((p, i) => `<span class="text-tertiary">${String(i + 1).padStart(2, '0')}</span>  ${escapeHTML(p.title)}`)
-            .join('\n') + '\n\nScroll to the Projects section for details and screenshots.';
+            .join('\n') + '\n\nType <span class="text-primary">open 1</span> to see a project in full.';
     },
     certs: () => {
         const certs = window.portfolioData.certifications;
@@ -510,6 +525,18 @@ function initTerminal() {
         terminalHistory.unshift(raw);
         historyIndex = -1;
 
+        const open = raw.match(/^open\s+(\d+)$/i);
+        if (open) {
+            const project = window.portfolioData.projects[Number(open[1]) - 1];
+            if (project) {
+                printTerminal(`Opening ${escapeHTML(project.title)}…\n`);
+                setTimeout(() => { location.href = window.ProjectModel.url(project); }, 350);
+            } else {
+                printTerminal('No project with that number — type <span class="text-primary">projects</span> to list them.\n', 'text-error');
+            }
+            return;
+        }
+
         const command = terminalCommands[raw.toLowerCase()];
         const result = command
             ? command()
@@ -569,6 +596,43 @@ window.openTerminal = openTerminal;
 window.closeTerminal = closeTerminal;
 window.showHireModal = showHireModal;
 window.observeReveals = observeReveals;
+
+// ================= PAGE TRANSITIONS =================
+// The cover of the project being opened is named "project-cover" so that it
+// morphs into the hero screenshot of the project page (see css/main.css).
+const isProjectPage = (url) => window.ProjectModel.isProjectUrl(url);
+
+function nameCoverFor(url) {
+    $$('.project-cover img').forEach((img) => { img.style.viewTransitionName = ''; });
+    if (!url || !isProjectPage(url)) return null;
+    const key = window.ProjectModel.keyFromLocation(url);
+    const card = key && [...$$('.project-card')].find((c) => c.dataset.projectId === key || c.dataset.projectSlug === key);
+    const img = card?.querySelector('.project-cover img');
+    if (!img) return null;
+    // Only morph a cover the visitor can actually see
+    const r = img.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return null;
+    img.style.viewTransitionName = 'project-cover';
+    return img;
+}
+
+// Leaving for a project page: name the matching cover before the snapshot
+window.addEventListener('pageswap', (e) => {
+    try { sessionStorage.setItem('home:scrollY', String(Math.round(window.scrollY))); } catch { /* ignore */ }
+    if (!e.viewTransition) return;
+    const to = e.activation?.entry?.url;
+    if (!to || !nameCoverFor(new URL(to))) return;
+    // Back/forward cache can restore this page later; start it clean
+    e.viewTransition.finished.finally(() => nameCoverFor(null));
+});
+
+// Coming back from a project page: morph its hero back into the card
+window.addEventListener('pagereveal', (e) => {
+    if (!e.viewTransition) return;
+    const from = window.navigation?.activation?.from?.url;
+    const img = from ? nameCoverFor(new URL(from)) : nameCoverFor(null);
+    if (img) e.viewTransition.finished.finally(() => { img.style.viewTransitionName = ''; });
+});
 
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', initializeApp);

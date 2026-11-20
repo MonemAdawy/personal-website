@@ -1,0 +1,201 @@
+{
+  "_readme": "Case-study content for the new Projects API. Keyed by each project's current _id. Sent with scripts/update-projects.mjs (PATCH /api/projects/:id). Repo facts (commits, dates, languages, team size) come from the GitHub repos as of 2026-11-20. Fields not listed here are left unchanged, including images.",
+  "projects": {
+    "6ac93b1772de6872c88bbad4": {
+      "title": "Journal Awards: Journalism Awards Management System",
+      "slug": "journal-awards",
+      "summary": "An end-to-end platform that runs a journalists' syndicate's awards: award cycles, online applications and fees, jury scoring, results and grievances.",
+      "description": "An end-to-end system that runs a journalists' syndicate's journalism awards, from setting up an award cycle to publishing ranked winners.\nAdmins define award cycles, types and branches, each with its own eligibility conditions, fees, weighted evaluation criteria and winner ranks. Members apply online, upload their work and pay the application fee; every application then goes to its branch's jury committee, where each juror scores it on a personal evaluation sheet. The system combines the scores into final results, records exclusions and handles grievances, while every role only sees the records it is responsible for.",
+      "techStack": ["Frappe Framework", "ERPNext", "Frappe REST API", "JavaScript (Frappe Desk)", "MariaDB", "Frappe Scheduler", "Role-based permissions", "NBE · UPG · Momken payments"],
+      "category": "backend",
+      "status": "completed",
+      "featured": true,
+      "order": 1,
+      "visibility": "private",
+      "client": { "name": "Journalists Syndicate", "displayName": "Professional journalists' syndicate in Egypt" },
+      "role": "Backend Developer",
+      "problem": "Journalism awards have many moving parts: per-branch eligibility rules and fees, jury committees with strict conflict-of-interest rules, weighted scoring and appeals. All of it has to be fair, consistent and traceable.",
+      "solution": "One system that covers the whole lifecycle, with automatic eligibility checks, a personal evaluation sheet for every juror, results calculated by the system, a grievance process and permissions scoped to each role.",
+      "features": [
+        "Award cycles, types and branches, each with its own eligibility rules, fees, weighted criteria and winner ranks",
+        "Online applications with work uploads and fee payment (NBE, UPG, Momken or cash)",
+        "Automatic checks that the applicant is an active member and the branch is open",
+        "A jury committee per branch, with a personal evaluation sheet for every juror",
+        "Juror eligibility rules: syndicate membership, years on the practicing roll, no council seat, not applying in the same cycle",
+        "Scores combined into final percentages, ranked winners and recorded exclusions",
+        "Grievances against published results",
+        "Board of trustees, admin committees and assignments, each role limited to its own records"
+      ],
+      "challenges": [
+        { "challenge": "Keeping the jury fair", "approach": "Juror eligibility is checked automatically against membership, years on the practicing roll, council seats and same-cycle applications" },
+        { "challenge": "Consistent scoring across branches", "approach": "Weighted criteria per branch, an individual evaluation sheet per juror, and final results calculated by the system instead of by hand" },
+        { "challenge": "Many roles handling sensitive records", "approach": "Role-based permissions that are scoped automatically, so each role only reaches its own records" }
+      ]
+    },
+
+    "69f64f0e7540e37c3b6892cf": {
+      "title": "Health Appointments",
+      "slug": "health-appointments",
+      "summary": "Backend for a doctor-appointment platform: guest booking, real-time availability, smart search, reviews, reminders and medical history, in a modular NestJS monorepo.",
+      "description": "A backend API for a doctor-appointment platform. Patients can book as guests, see real-time availability, search and filter doctors, read reviews and check insurance coverage, while reminders, medical history and gamified rewards keep them engaged.\nThe code is a modular NestJS monorepo: separate deployable apps for the patient app, the admin dashboard, the customer portal and background jobs, all sharing the same business logic through common libraries on top of PostgreSQL and Redis.",
+      "techStack": ["NestJS", "TypeScript", "PostgreSQL", "TypeORM", "Redis", "Monorepo"],
+      "category": "backend",
+      "status": "completed",
+      "featured": true,
+      "order": 2,
+      "visibility": "private",
+      "role": "Backend Developer",
+      "teamSize": 5,
+      "duration": { "start": "2026-01-15", "end": "2026-06-07" },
+      "problem": "Booking a doctor is often slow and opaque: patients can't easily see who is available, which insurance is accepted or what other patients think, and appointments get forgotten.",
+      "solution": "An API that exposes live availability, search, reviews and insurance data, lets guests book quickly and sends reminders, built as separate apps that share one set of business rules.",
+      "features": [
+        "Guest booking without creating an account",
+        "Real-time doctor availability",
+        "Smart search and filters",
+        "Doctor reviews and ratings",
+        "Insurance visibility per clinic",
+        "Appointment reminders",
+        "Patient medical history",
+        "Gamification rewards"
+      ],
+      "challenges": [
+        { "challenge": "Several apps sharing the same rules", "approach": "A monorepo where the patient, admin, customer and background-job apps reuse shared libraries for entities, services and repositories" },
+        { "challenge": "Work that shouldn't slow down requests", "approach": "A dedicated background-processor app for scheduled and long-running jobs" }
+      ],
+      "proof": {
+        "commitsCount": 42,
+        "firstCommitAt": "2026-01-15T11:32:34Z",
+        "lastCommitAt": "2026-06-07T19:42:08Z",
+        "lastCommitSha": "1bccd60",
+        "languages": [{ "name": "TypeScript", "percent": 89 }, { "name": "JavaScript", "percent": 11 }],
+        "verified": true
+      }
+    },
+
+    "69f64e377540e37c3b689263": {
+      "title": "Railway Reservation",
+      "slug": "railway-reservation",
+      "summary": "Backend for a railway reservation system: trains, schedules, routes and bookings, with email OTP sign-in, localized validation, rate limiting and structured logging.",
+      "description": "A modular, scalable backend for managing trains, schedules, routes and reservations. It handles passenger records and onboarding, and signs users in with email one-time passwords.\nThe API is built to run in production: validation errors come back in the user's language, every route is rate limited, logs are structured and rotated daily, and the whole stack runs in Docker with separate development and production setups.",
+      "techStack": ["NestJS", "TypeScript", "PostgreSQL", "Drizzle ORM", "Better Auth", "Swagger", "Winston", "Docker"],
+      "category": "backend",
+      "status": "completed",
+      "featured": false,
+      "order": 3,
+      "visibility": "private",
+      "role": "Backend Developer",
+      "teamSize": 7,
+      "duration": { "start": "2025-12-01", "end": "2026-01-13" },
+      "problem": "A reservation system serves many users at once and in more than one language. It needs secure sign-in, protection from abuse and logs that make production issues easy to trace.",
+      "solution": "A NestJS and PostgreSQL API with email-OTP authentication, localized validation, global rate limiting and structured logging, packaged with Docker for consistent environments.",
+      "features": [
+        "Trains, schedules, routes and reservations",
+        "Passenger management with pagination",
+        "Email OTP sign-in",
+        "Localized validation errors (i18n)",
+        "Global rate limiting",
+        "Structured logging with daily log rotation",
+        "Swagger API documentation",
+        "Dockerized development and production environments",
+        "Health-check endpoint"
+      ],
+      "challenges": [
+        { "challenge": "Errors users can understand", "approach": "Validation messages are translated into the request's language" },
+        { "challenge": "Protecting the API from abuse", "approach": "A global rate limit on every route" },
+        { "challenge": "Tracing problems in production", "approach": "Structured logs written to daily-rotated files" }
+      ],
+      "proof": {
+        "commitsCount": 125,
+        "firstCommitAt": "2025-12-01T11:30:50Z",
+        "lastCommitAt": "2026-01-13T13:46:28Z",
+        "lastCommitSha": "59ecffc",
+        "languages": [{ "name": "TypeScript", "percent": 96 }, { "name": "JavaScript", "percent": 3 }, { "name": "Dockerfile", "percent": 1 }],
+        "verified": true
+      }
+    },
+
+    "6a106fe56f2586c202439e35": {
+      "title": "Super Fitness API",
+      "slug": "super-fitness-api",
+      "summary": "Fitness platform backend with personalized workouts, training programs and an AI coach chat powered by Gemini, streamed to users in real time.",
+      "description": "A scalable fitness platform backend with a clean, modular architecture. Users get personalized workouts and exercises, category-based training programs and their own profiles, plus an AI chat powered by Gemini whose answers stream in as they are written.\nAccounts are protected with JWT and refresh tokens, session management and role-based access. Media and workout videos are stored in Cloudinary, and the API follows security and performance best practices, with rate limiting, request validation, consistent error handling and Swagger documentation.",
+      "techStack": ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "Gemini AI", "Server-Sent Events", "Cloudinary", "Swagger"],
+      "category": "backend",
+      "status": "completed",
+      "featured": false,
+      "order": 4,
+      "visibility": "private",
+      "role": "Backend Developer",
+      "teamSize": 3,
+      "duration": { "start": "2026-04-19", "end": "2026-05-20" },
+      "problem": "Fitness apps need personal plans, rich media and quick answers to users' questions, without compromising account security.",
+      "solution": "A modular NestJS and PostgreSQL backend with personalized workouts, Cloudinary-hosted media and an AI chat that streams Gemini's answers to the user as they are generated.",
+      "features": [
+        "JWT authentication with refresh tokens and session management",
+        "Role-based access control",
+        "Personalized workouts and exercise management",
+        "Category-based training programs",
+        "User profiles",
+        "AI coach chat powered by Gemini, streamed in real time",
+        "Media and video storage with Cloudinary",
+        "Security hardening: Helmet, CORS and rate limiting",
+        "Swagger API documentation"
+      ],
+      "challenges": [
+        { "challenge": "AI answers that feel instant", "approach": "Responses are streamed to the client with Server-Sent Events instead of waiting for the full reply" },
+        { "challenge": "Serving workout videos", "approach": "Media is stored and delivered through Cloudinary" }
+      ],
+      "proof": {
+        "commitsCount": 13,
+        "firstCommitAt": "2026-04-19T18:21:12Z",
+        "lastCommitAt": "2026-05-20T13:21:39Z",
+        "lastCommitSha": "8de9d0a",
+        "languages": [{ "name": "TypeScript", "percent": 98 }, { "name": "JavaScript", "percent": 2 }],
+        "verified": true
+      }
+    },
+
+    "69f4da89d37be6d63f9e2b2e": {
+      "title": "E-commerce API",
+      "slug": "e-commerce-api",
+      "summary": "Production-style e-commerce backend with REST and GraphQL APIs, Stripe payments, real-time order updates and Redis caching.",
+      "description": "A scalable e-commerce backend built with NestJS and MongoDB. It covers the full shop flow: accounts and roles, a product catalog, orders with search and filtering, and Stripe payments, with customers notified in real time as their order status changes.\nIt exposes both REST and GraphQL APIs, caches frequent reads in Redis, is covered by unit and end-to-end tests, and is ready to run in Docker.",
+      "techStack": ["NestJS 11", "TypeScript", "MongoDB", "Mongoose", "GraphQL", "Redis", "Stripe", "WebSocket", "Jest", "Docker"],
+      "category": "backend",
+      "status": "completed",
+      "featured": false,
+      "order": 5,
+      "visibility": "private",
+      "role": "Sole developer",
+      "teamSize": 1,
+      "problem": "An online store has to keep accounts secure, process payments reliably and stay fast as the catalog and traffic grow.",
+      "solution": "A layered NestJS API over MongoDB, with JWT and refresh tokens, role-based access, Stripe payments, WebSocket notifications and Redis caching.",
+      "features": [
+        "Secure authentication with JWT and refresh tokens",
+        "Role-based access control (Admin / User)",
+        "Product management",
+        "Order lifecycle with pagination, filtering and search",
+        "Stripe payment processing",
+        "Real-time order status notifications over WebSocket",
+        "REST and GraphQL APIs",
+        "Redis caching",
+        "Unit and end-to-end tests",
+        "Docker-ready deployment"
+      ],
+      "challenges": [
+        { "challenge": "Keeping customers informed", "approach": "Order status changes are pushed to clients over WebSocket" },
+        { "challenge": "Fast catalog reads", "approach": "Frequently read data is cached in Redis" },
+        { "challenge": "Consistent error responses", "approach": "A global interceptor shapes every error the same way" }
+      ],
+      "proof": {
+        "commitsCount": 7,
+        "firstCommitAt": "2026-02-14T05:17:24Z",
+        "lastCommitAt": "2026-02-14T10:28:18Z",
+        "lastCommitSha": "203d39f",
+        "languages": [{ "name": "TypeScript", "percent": 99 }, { "name": "JavaScript", "percent": 1 }],
+        "verified": true
+      }
+    }
+  }
+}

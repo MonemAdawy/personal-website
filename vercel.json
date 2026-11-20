@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/projects/:slug", "destination": "/project.html" }
+  ],
   "redirects": [
     {
       "source": "/:path*",

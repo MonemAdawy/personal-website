@@ -6,7 +6,7 @@
             <h2 class="section-title reveal" style="--d:.08s">Projects I've <span class="text-gradient">engineered.</span></h2>
         </div>
         <p class="section-lead reveal md:max-w-sm" style="--d:.16s">
-            Real systems with authentication, payments, caching and tests. Click any cover to browse screenshots.
+            Real systems with authentication, payments, caching and tests. Open any project for the full story: the problem, what I built, screenshots and proof of work.
         </p>
     </div>
 
@@ -29,28 +29,3 @@
         </a>
     </div>
 </section>
-
-<!-- Image gallery modal -->
-<div id="image-modal" class="fixed inset-0 hidden items-center justify-center z-[350] p-4" onclick="if(event.target === this) closeModal()">
-    <div class="relative w-full max-w-5xl">
-        <div class="flex items-center justify-between mb-4">
-            <span id="image-counter" class="mono-label text-xs text-on-surface-variant"></span>
-            <button onclick="closeModal()" class="icon-btn" aria-label="Close gallery">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-
-        <div class="relative flex items-center justify-center">
-            <img id="modal-image" class="w-full max-h-[75vh] object-contain" alt="Project screenshot"/>
-
-            <button onclick="prevImage()" class="icon-btn absolute left-2 sm:-left-16 top-1/2 -translate-y-1/2 !bg-black/60" aria-label="Previous image">
-                <span class="material-symbols-outlined">chevron_left</span>
-            </button>
-            <button onclick="nextImage()" class="icon-btn absolute right-2 sm:-right-16 top-1/2 -translate-y-1/2 !bg-black/60" aria-label="Next image">
-                <span class="material-symbols-outlined">chevron_right</span>
-            </button>
-        </div>
-
-        <div id="modal-dots" class="flex justify-center mt-5 gap-2"></div>
-    </div>
-</div>
